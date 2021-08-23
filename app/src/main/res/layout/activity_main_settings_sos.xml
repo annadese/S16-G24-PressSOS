@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown"
+    android:orientation="vertical"
+    tools:context=".MainSettingsSOS">
+
+    <TextView
+        android:id="@+id/editsos_tvheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="Edit SOS Message"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/editsos_ptname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:width="300dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Input SOS Message"
+        android:textAlignment="center"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/editsos_btnsave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:includeFontPadding="false"
+            android:text="SAVE"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:backgroundTint="@color/brown"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.5dp" />
+
+        <Button
+            android:id="@+id/editsos_btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CANCEL"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+</LinearLayout>

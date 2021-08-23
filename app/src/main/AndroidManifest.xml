@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".MainSettingsEditName"></activity>
+        <activity android:name=".MainSettingsSOS"></activity>
+        <activity android:name=".MainSettingsEditNumber" />
+        <activity android:name=".MainSettingsEditName" />
         <activity android:name=".MainSettings" />
         <activity android:name=".SetUpAccount" />
         <activity android:name=".MainActivity">
