@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PressSOS</string>
+    <string name="header_how_to">Press the SOS button when in an emergency situation.</string>
+    <string name="how_to_use_presssos">How to use PressSOS</string>
+    <string name="how_to_reminder_label">Reminders:</string>
+    <string name="how_to_one_number1">1.</string>
+    <string name="how_to_one_number2">2.</string>
+    <string name="how_to_one_number1_info">Make sure that you are connected to either mobile data or Wi-Fi for the location feature to be activated.</string>
+    <string name="alsdhkfasdhj">Hello po</string>
 </resources>
