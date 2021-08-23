@@ -7,6 +7,66 @@
     android:background="@color/brown"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/main_btnsos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="280dp"
+            android:height="280dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="SOS"
+            android:textColor="#FFFFFF"
+            android:textSize="70sp"
+            android:textStyle="bold"
+            app:cornerRadius="140dp"
+            app:strokeColor="@color/light_red"
+            app:strokeWidth="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ic_baseline_crop_square_24"
+        android:backgroundTint="@color/light_brown"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/main_tvalarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Alarm on SOS"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <Switch
+            android:id="@+id/main_btnalarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
