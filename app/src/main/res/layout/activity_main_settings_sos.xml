@@ -21,14 +21,15 @@
         android:textSize="34sp" />
 
     <EditText
-        android:id="@+id/editsos_ptname"
+        android:id="@+id/editsos_ptsos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:width="300dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:gravity="center"
+        android:inputType="textMultiLine"
         android:text="Input SOS Message"
         android:textAlignment="center"
         android:textColor="@color/black" />
