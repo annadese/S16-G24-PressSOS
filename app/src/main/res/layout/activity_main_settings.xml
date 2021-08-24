@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp"
-        android:text="Set-up Account"
+        android:text="Account Settings"
         android:textAlignment="center"
         android:textColor="#050505"
         android:textSize="34sp" />
