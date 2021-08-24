@@ -7,7 +7,7 @@
     android:background="@color/brown">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/howto_tvHeader"
         android:layout_width="212dp"
         android:layout_height="91dp"
         android:layout_marginTop="40dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/howto_tvInRed"
         android:layout_width="323dp"
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
@@ -32,21 +32,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/howto_tvHeader" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/howto_ivButton"
         android:layout_width="108dp"
         android:layout_height="85dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/howto_tvInRed"
         app:srcCompat="@android:drawable/ic_notification_overlay" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/howto_tvText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/howto_ivButton" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -64,10 +64,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/howto_tvText">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/howto_tvNum1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
@@ -75,7 +75,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/howto_tvNum1Info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/howto_tvNum2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
@@ -103,7 +103,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/howto_tvNum2Info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -114,7 +114,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/howto_next1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
