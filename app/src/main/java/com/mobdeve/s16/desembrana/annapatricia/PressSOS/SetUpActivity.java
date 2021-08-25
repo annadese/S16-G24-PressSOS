@@ -1,5 +1,6 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,17 +33,26 @@ public class SetUpActivity extends AppCompatActivity {
                 if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()){
                     Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
                 }
-
-                if(!et_pin1.getText().toString().equals(et_pin2)){
-                    Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
+                else{
+                    account.setName(et_name.toString());
+                    account.setNum(Integer.parseInt(et_num.toString()));
+                    account.setPin(Integer.parseInt(et_num.toString()));
+                    Intent i = new Intent(SetUpActivity.this, MainActivity.class); // not working
+                    startActivity(i);
                 }
 
-                else {
+                /*if(et_pin1.equals(et_pin2)){
                     account.setName(et_name.toString());
                     account.setNum(Integer.parseInt(et_num.toString()));
                     account.setPin(Integer.parseInt(et_num.toString()));
                     finish();
+                    Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+                    startActivity(i);
                 }
+
+                else {
+                    Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
+                }*/
             }
         });
     }
