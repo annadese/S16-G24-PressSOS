@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class AccountFragment extends Fragment {
 
@@ -28,6 +29,30 @@ public class AccountFragment extends Fragment {
                 AccountFragment.this.startActivity(intent);
             }
         });
+
+        btneditnum.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), EditNumActivity.class);
+                AccountFragment.this.startActivity(intent);
+            }
+        });
+
+        btneditsos.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), EditSOSActivity.class);
+                AccountFragment.this.startActivity(intent);
+            }
+        });
+
+        btnclear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Toast.makeText(getActivity(), "Cleared Location History", Toast.LENGTH_LONG).show();
+            }
+        });
+
         return view;
     }
 }

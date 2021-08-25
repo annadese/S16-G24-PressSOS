@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Info02Activity" />
         <activity android:name=".EditNameActivity" />
+        <activity android:name=".EditNumActivity" />
+        <activity android:name=".EditSOSActivity" />
     </application>
 
 </manifest>
