@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="54dp"
         android:background="@drawable/ic_baseline_crop_square_24"
         android:backgroundTint="@color/light_brown"
         android:orientation="horizontal"
@@ -48,7 +48,7 @@
         android:paddingTop="10dp"
         android:paddingRight="30dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -68,142 +68,5 @@
             android:checked="false"
             android:textAlignment="center" />
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_brown"
-        android:orientation="horizontal"
-        android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/infoLl"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/locationLl"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_info_24" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Info"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/locationLl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/sos"
-            app:layout_constraintStart_toEndOf="@+id/infoLl"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_location_on_24" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Location History"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/sos"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/ic_baseline_circle"
-            android:gravity="center"
-            android:text="SOS"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/contactsLl"
-            app:layout_constraintStart_toEndOf="@+id/locationLl"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/contactsLl"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/accountLl"
-            app:layout_constraintStart_toEndOf="@+id/sos"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_contacts_24" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Emergency Contacts"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/accountLl"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/contactsLl"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_account_circle_24" />
-
-            <TextView
-                android:id="@+id/howto_tvHeader"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Account"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

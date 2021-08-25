@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/brown"
     android:orientation="vertical"
-    tools:context=".MainSettings">
+    tools:context=".AccountFragment">
 
     <TextView
         android:id="@+id/mainset_tvheader"
