@@ -13,6 +13,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/how_to_use_presssos"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
