@@ -24,7 +24,7 @@
         android:id="@+id/howto_tvInRed"
         android:layout_width="348dp"
         android:layout_height="35dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:text="SOS button has been pressed."
         android:textAlignment="center"
         android:textColor="@color/light_red"
@@ -37,8 +37,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="412dp"
-        android:layout_height="53dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number1"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/howto_tvNum1Info"
@@ -60,13 +61,14 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="The alarm sound will go off, if turned on in the Settings."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number2"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/howto_tvNum2Info"
@@ -88,14 +90,15 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="Your location will be recorded and saved in the Location History every 5 minutes."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="409dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="3."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView14"
@@ -117,13 +120,14 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="A text message will be sent to your emergency contact/s every 5 minutes with your current location."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="409dp"
-        android:layout_height="53dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="4."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView16"
@@ -145,18 +149,18 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="Turn off the SOS button once you are in a safe situation. "
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/howto_next2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="60dp"
         android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@
             android:textStyle="bold"
             app:cornerRadius="140dp"
             app:strokeColor="@color/light_red"
-            app:strokeWidth="20dp" />
+            app:strokeWidth="30dp" />
 
     </LinearLayout>
 

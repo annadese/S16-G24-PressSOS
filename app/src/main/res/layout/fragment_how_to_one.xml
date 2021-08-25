@@ -28,23 +28,33 @@
         android:text="@string/header_how_to"
         android:textAlignment="center"
         android:textColor="@color/light_red"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/howto_tvHeader" />
 
-    <ImageView
-        android:id="@+id/howto_ivButton"
-        android:layout_width="108dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="8dp"
+    <Button
+        android:id="@+id/howto_btnsos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:height="100dp"
+        android:clickable="false"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="SOS"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/howto_tvInRed"
-        app:srcCompat="@android:drawable/ic_notification_overlay" />
+        app:strokeColor="@color/light_red"
+        app:strokeWidth="10dp" />
 
     <TextView
         android:id="@+id/howto_tvText"
@@ -52,16 +62,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/how_to_reminder_label"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/howto_ivButton" />
+        app:layout_constraintTop_toBottomOf="@+id/howto_btnsos" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="406dp"
-        android:layout_height="75dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number1"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/howto_tvNum1Info"
@@ -83,13 +93,13 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="@string/how_to_one_number1_info"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="119dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number2"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/howto_tvNum2Info"
@@ -111,18 +121,18 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="You must have mobile load for the text message feature to be implemented successfully."
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/howto_next2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
