@@ -156,6 +156,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="Clear Location History"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/dark_red"/>
 
 </LinearLayout>

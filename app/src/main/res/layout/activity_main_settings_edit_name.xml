@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brown"
-    android:orientation="vertical"
-    tools:context=".MainSettingsEditName">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/emergencyContacts_tvHeader"
@@ -61,7 +60,8 @@
             android:layout_gravity="center"
             android:text="CANCEL"
             android:textAlignment="center"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@color/dark_red"/>
 
     </LinearLayout>
 

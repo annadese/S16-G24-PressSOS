@@ -12,8 +12,7 @@
     android:layout_gravity="center"
     android:background="#E3DAC9"
     android:orientation="vertical"
-    android:textAlignment="center"
-    tools:context=".SetUpAccount">
+    android:textAlignment="center">
 
     <TextView
         android:id="@+id/setup_tvheader"
@@ -187,6 +186,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="SIGN UP"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/dark_red"/>
 
 </LinearLayout>
