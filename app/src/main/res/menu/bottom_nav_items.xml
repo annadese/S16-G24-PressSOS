@@ -11,8 +11,8 @@
         android:title="Location History" />
     <item
         android:id="@+id/SOS_item"
-        android:icon="@android:drawable/ic_dialog_alert"
-        android:title="SOS" />
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
 
     <item
         android:id="@+id/emergencyContacts_item"
