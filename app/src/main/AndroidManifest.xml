@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Info02Activity" />
+        <activity android:name=".Info03Activity" />
+        <activity android:name=".EditNameActivity" />
     </application>
 
 </manifest>
