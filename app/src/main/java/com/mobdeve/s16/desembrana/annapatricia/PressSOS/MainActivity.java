@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.nav_bar);
 
         this.bottomNav = findViewById(R.id.bottomNavigationView);
-        Log.d("MAIN act", String.valueOf(bottomNav));
         this.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
 
