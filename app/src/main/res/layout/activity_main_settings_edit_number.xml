@@ -29,9 +29,9 @@
         android:width="300dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Input Contact Number"
+        android:text="09178952449"
         android:textAlignment="center"
-        android:textColor="@color/black" />
+        android:textColor="#6C6868" />
 
     <LinearLayout
         android:layout_width="wrap_content"

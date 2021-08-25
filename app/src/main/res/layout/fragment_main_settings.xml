@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:width="200dp"
-            android:text="Juan Dela Cruz"
+            android:text="Name"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -57,7 +57,6 @@
         android:layout_height="0.5dp"
         android:layout_below="@+id/connect_help"
         android:layout_gravity="center"
-        android:layout_marginBottom="15dp"
         android:width="300dp"
         android:background="#FF777373"
         android:gravity="center_horizontal" />
@@ -75,7 +74,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:width="200dp"
-            android:text="09178952449"
+            android:text="Contact Number"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -110,7 +109,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
@@ -136,23 +134,20 @@
             android:text="EDIT"
             android:textColor="#000000"
             android:textStyle="normal" />
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/mainset_tvsos"
+        android:id="@+id/line4"
+        style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/connect_help"
         android:layout_gravity="center"
-        android:width="250dp"
-        android:background="@drawable/ic_baseline_crop_square_24"
-        android:fontFamily="sans-serif-light"
-        android:paddingLeft="20dp"
-        android:paddingTop="5dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="15dp"
-        android:text="EMERGENCY! Juan is in danger. Please see this link for his location."
-        android:textColor="#020202"
-        android:textSize="16sp" />
+        android:layout_marginBottom="10dp"
+        android:width="300dp"
+        android:background="#FF777373"
+        android:gravity="center_horizontal" />
 
     <Button
         android:id="@+id/mainset_btnclear"
