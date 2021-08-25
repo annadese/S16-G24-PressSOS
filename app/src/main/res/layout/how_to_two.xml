@@ -60,7 +60,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="55dp"
             android:layout_weight="1"
-            android:text="The alarm sound will go off, if turned on in the Settings."
+            android:text="The alarm sound will go off, if turned on in the SOS Button page."
             android:textSize="16sp" />
     </LinearLayout>
 
