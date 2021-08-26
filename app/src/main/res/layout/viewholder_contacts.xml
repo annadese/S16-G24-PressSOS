@@ -58,7 +58,8 @@
         android:gravity="right"
         android:text="EDIT"
         android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

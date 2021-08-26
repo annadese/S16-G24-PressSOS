@@ -1,16 +1,21 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
-public class Location {
-    // work in progress
-    private String name;
-    private int time;
+import java.util.Date;
 
-    public Location (String name, int contactNumber) {
-        this.name = name;
-        this.time = contactNumber;
+public class Location {
+    private long id;
+    private String locationName;
+    private Date timestamp;
+
+    public Location (String locationName, Date timestamp, long id) {
+        this.locationName = locationName;
+        this.timestamp = timestamp;
+        this.id = id;
     }
 
-    public String getName() { return name; }
+    public String getLocationName() { return locationName; }
+    public Date getTime() { return timestamp; }
 
-    public int getTime() { return time; }
+    public void setLocationName() {this.locationName = locationName; }
+    public void setTime(Date timestamp) { this.timestamp = timestamp; }
 }
