@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number1"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -61,6 +62,7 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="The alarm sound will go off, if turned on in the SOS Button page."
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="@string/how_to_one_number2"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -90,6 +93,7 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="Your location will be recorded and saved in the Location History every 5 minutes."
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -110,6 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="3."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -120,6 +125,7 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="A text message will be sent to your emergency contact/s every 5 minutes with your current location."
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -139,6 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:text="4."
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
@@ -149,6 +156,7 @@
             android:layout_marginRight="55dp"
             android:layout_weight="1"
             android:text="Turn off the SOS button once you are in a safe situation. "
+            android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
 
