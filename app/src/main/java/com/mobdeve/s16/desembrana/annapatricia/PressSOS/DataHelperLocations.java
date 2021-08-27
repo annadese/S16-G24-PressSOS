@@ -11,10 +11,10 @@ public class DataHelperLocations {
     public ArrayList<Location> initializeLocations() throws ParseException {
 
         ArrayList<Location> locations = new ArrayList<>();
-        String[] date = {"31/12/1998", "31/12/1998", "31/12/1998"};
-        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date[1]);
-        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(date[2]);
-        Date date3=new SimpleDateFormat("dd/MM/yyyy").parse(date[3]);
+        String[] date = {"15/09/1998", "31/12/2021", "05/11/1999"};
+        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(date[0]);
+        Date date2=new SimpleDateFormat("dd/MM/yyyy").parse(date[1]);
+        Date date3=new SimpleDateFormat("dd/MM/yyyy").parse(date[2]);
 
         locations.add(new Location(
                 "Pasig City",
@@ -22,14 +22,14 @@ public class DataHelperLocations {
                 01));
 
         locations.add(new Location(
-                "Pasig City",
+                "Quezon City",
                 date2,
-                01));
+                02));
 
         locations.add(new Location(
-                "Pasig City",
+                "Tagaytay City",
                 date3,
-                01));
+                03));
         Collections.shuffle(locations);
 
         return locations;

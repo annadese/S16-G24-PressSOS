@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EmergencyContactsFragment extends Fragment {
 
@@ -21,11 +23,13 @@ public class EmergencyContactsFragment extends Fragment {
     private FloatingActionButton btnaddcontact;
     private RecyclerView recyclerView;
     private AdapterContacts cAdapter;
+    private DataHelperContacts dhc = new DataHelperContacts();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_emergency_contacts_main, container, false);
 
-        //this.data = DataHelper.loadEmergencyContactData();
+        this.data = dhc.initializeContacts();
+
         this.btnaddcontact = (FloatingActionButton) view.findViewById(R.id.addContactFab);
         this.recyclerView = (RecyclerView) view.findViewById(R.id.contactsRecyclerView);
 
