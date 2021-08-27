@@ -14,7 +14,7 @@ public class SetUpActivity extends AppCompatActivity {
     private Button btnsave;
     private EditText et_name, et_num, et_pin1, et_pin2, et_ename, et_enum;
     private String name, num, e_name;
-    private int pin, e_num;
+    private int pin1, pin2, e_num;
     private Account account;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -39,26 +39,19 @@ public class SetUpActivity extends AppCompatActivity {
                 else{
                     name = et_name.getText().toString();
                     num = et_num.getText().toString();
-                    pin = Integer.parseInt(et_pin1.getText().toString());
-                    /*e_name = et_ename.getText().toString();
-                    e_num = Integer.parseInt(et_enum.toString());*/
-                    account = new Account(name, num, pin);
-                    Intent i = new Intent(SetUpActivity.this, MainActivity.class); // not working
-                    startActivity(i);
-                }
+                    pin1 = Integer.parseInt(et_pin1.getText().toString());
+                    pin2 = Integer.parseInt(et_pin2.getText().toString());
 
-                /*if(et_pin1.equals(et_pin2)){
-                    account.setName(et_name.toString());
-                    account.setNum(Integer.parseInt(et_num.toString()));
-                    account.setPin(Integer.parseInt(et_num.toString()));
-                    finish();
-                    Intent i = new Intent(SetUpActivity.this, MainActivity.class);
-                    startActivity(i);
-                }
+                    if(pin1 == pin2){
+                        account = new Account(name, num, pin1);
+                        Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }
 
-                else {
-                    Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
-                }*/
+                    else {
+                        Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
