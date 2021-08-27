@@ -13,6 +13,7 @@ public class SetUpActivity extends AppCompatActivity {
 
     private Button btnsave;
     private EditText et_name, et_num, et_pin1, et_pin2, et_ename, et_enum;
+    private String name;
     private Account account;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -33,12 +34,16 @@ public class SetUpActivity extends AppCompatActivity {
                 if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()){
                     Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
                 }
+
                 else{
-                    account.setName(et_name.toString());
+                    //name = et_name.getText().toString();
+                    //account.setName("mname");
+                    Intent i = new Intent(SetUpActivity.this, MainActivity.class); // not working
+                    startActivity(i);/*
                     account.setNum(Integer.parseInt(et_num.toString()));
                     account.setPin(Integer.parseInt(et_num.toString()));
-                    Intent i = new Intent(SetUpActivity.this, MainActivity.class); // not working
-                    startActivity(i);
+                    Intent i = new Intent(SetUpActivity.this, Info02Activity.class); // not working
+                    startActivity(i);*/
                 }
 
                 /*if(et_pin1.equals(et_pin2)){
