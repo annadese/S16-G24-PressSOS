@@ -48,18 +48,4 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/vhcontacts_btnedit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="sans-serif-light"
-        android:gravity="right"
-        android:text="EDIT"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout9" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

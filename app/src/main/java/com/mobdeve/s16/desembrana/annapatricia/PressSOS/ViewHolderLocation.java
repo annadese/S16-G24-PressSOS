@@ -7,20 +7,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.jetbrains.annotations.NotNull;
-
 public class ViewHolderLocation extends RecyclerView.ViewHolder {
 
     private TextView tvLocation;
     private TextView tvTime;
     private Button btnView;
 
-    public ViewHolderLocation(@NonNull @NotNull View itemView) {
+    public ViewHolderLocation(@NonNull View itemView) {
         super(itemView);
 
         this.tvLocation = itemView.findViewById(R.id.viewholder_tvLoc);
         this.tvTime = itemView.findViewById(R.id.viewholder_tvTime);
-        this.btnView = itemView.findViewById(R.id.viewholder_btnView);
     }
 
     public void setTvLocation(String location) {

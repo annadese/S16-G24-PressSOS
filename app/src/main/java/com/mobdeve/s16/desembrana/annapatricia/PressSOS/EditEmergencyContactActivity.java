@@ -1,5 +1,6 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class EditEmergencyContactActivity extends AppCompatActivity {
 
     private Button btnsave, btncancel;
-    private EditText et_name, et_num;
+    private EditText et_name;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -20,7 +21,6 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         this.btnsave = findViewById(R.id.editContact_btnSave);
         this.btncancel = findViewById(R.id.editContact_btnCancel);
         this.et_name = findViewById(R.id.editEmergencyContacts_etname);
-        this.et_num = findViewById(R.id.editEmergencyContacts_etnum);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
