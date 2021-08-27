@@ -23,9 +23,6 @@ public class EditNameActivity extends AppCompatActivity {
         this.btncancel = findViewById(R.id.editname_btncancel);
         this.et_name = findViewById(R.id.editname_ptname);
 
-       // name = account.getName();
-        //et_name.setText("name");
-
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
