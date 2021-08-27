@@ -13,6 +13,8 @@ public class EditNameActivity extends AppCompatActivity {
 
     private Button btnsave, btncancel;
     private EditText et_name;
+    private Account account;
+    private String name;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -21,6 +23,9 @@ public class EditNameActivity extends AppCompatActivity {
         this.btnsave = findViewById(R.id.editname_btnsave);
         this.btncancel = findViewById(R.id.editname_btncancel);
         this.et_name = findViewById(R.id.editname_ptname);
+
+       // name = account.getName();
+        //et_name.setText("name");
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
