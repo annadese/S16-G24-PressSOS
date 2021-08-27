@@ -32,7 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(DbReferences.CREATE_LOCATION_TABLE_STATEMENT);
     }
 
-    // Called when a new version of the DB is present; hence, an "upgrade" to a newer version
+    // Called when a new version of the DB is present
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(DbReferences.DROP_CONTACT_TABLE_STATEMENT);
@@ -132,6 +132,51 @@ public class DbHelper extends SQLiteOpenHelper {
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
         database.insert(DbReferences.TABLEc_NAME, null, values);
 
+        database.close();
+    }
+
+    // Performs an UPDATE operation by comparing the old contact with the new contact. This method
+    // tries to reduce the length of the update statement by only including attributes that have
+    // been changed. If no changed are present, the update statement is simply not called.
+    public void updateContact(Contact cOld, Contact cNew) {
+        boolean withChanges = false;
+        ContentValues values = new ContentValues();
+
+        if(!cNew.getName().equals(cOld.getName())) {
+            values.put(DbReferences.COLUMN_NAME, cNew.getName());
+            withChanges = true;
+        }
+
+        if(!cNew.getContactNumber().equals(cOld.getContactNumber())) {
+            values.put(DbReferences.COLUMN_NUMBER, cNew.getContactNumber());
+            withChanges = true;
+        }
+
+        if(withChanges) {
+            SQLiteDatabase database = this.getWritableDatabase();
+            database.update(
+                    DbReferences.TABLEc_NAME,
+                    values,
+                    DbReferences._IDc + " = ?",
+                    new String[]{String.valueOf(cNew.getId())});
+            database.close();
+        }
+    }
+
+    // The delete contact method that takes in a contact object and uses its ID to find and delete
+    // the entry.
+    public void deleteContact(Contact c) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(
+                DbReferences.TABLEc_NAME,
+                DbReferences._IDc + " = ?",
+                new String[]{String.valueOf(c.getId())});
+        database.close();
+    }
+
+    public void deleteAllLocations(Contact c) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("delete from "+ DbReferences.TABLEl_NAME);
         database.close();
     }
 
