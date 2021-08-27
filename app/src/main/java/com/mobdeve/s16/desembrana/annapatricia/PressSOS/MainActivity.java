@@ -17,22 +17,13 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
-    private Button btnsos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_bar);
 
-        this.btnsos = findViewById(R.id.main_btnsos);
         this.bottomNav = findViewById(R.id.bottomNavigationView);
-
-        /*btnsos.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Toast.makeText(MainActivity.this, "SOS button has been pressed.", Toast.LENGTH_LONG).show();
-            }
-        });*/
 
         this.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
