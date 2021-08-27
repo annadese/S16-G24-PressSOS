@@ -1,13 +1,14 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -20,19 +21,26 @@ public class AdapterContacts extends RecyclerView.Adapter<ViewHolderContacts> {
     }
 
     @NonNull
-    @NotNull
     @Override
-    public ViewHolderContacts onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ViewHolderContacts onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.item_contacts, parent, false);
 
         ViewHolderContacts viewHolderContacts = new ViewHolderContacts(itemView);
+        viewHolderContacts.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(parent.getContext(), EditEmergencyContactActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
 
         return viewHolderContacts;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ViewHolderContacts holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderContacts holder, int position) {
         holder.setTvName(contacts.get(position).getName());
         holder.setTvContactNumber(contacts.get(position).getContactNumber());
     }

@@ -16,13 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".Info02Activity" />
         <activity android:name=".Info03Activity" />
         <activity android:name=".EditNameActivity" />
         <activity android:name=".EditNumActivity" />
         <activity android:name=".EditSOSActivity" />
-        <activity android:name=".EnterPinActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
