@@ -23,17 +23,17 @@ public class LocationHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location_history, container, false);
 
-        this.data = DataHelper.loadLocationData();
+        //this.data = DataHelper.loadLocationData();
         this.btnviewlocation = view.findViewById(R.id.viewholder_btnView);
 
         this.recyclerView = (RecyclerView) view.findViewById(R.id.contactsRecyclerView);
-        btnviewlocation.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
-                LocationHistoryFragment.this.startActivity(intent);
-            }
-        });
+//        btnviewlocation.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
+//                LocationHistoryFragment.this.startActivity(intent);
+//            }
+//        });
 
         this.lAdapter = new AdapterContacts(data);
         this.recyclerView.setAdapter(this.lAdapter);
