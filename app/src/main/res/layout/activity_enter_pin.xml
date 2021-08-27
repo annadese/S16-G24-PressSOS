@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/pin_etpin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="54dp"
@@ -29,4 +29,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pin_etpin">
+
+        <Button
+            android:id="@+id/pin_btnsave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:includeFontPadding="false"
+            android:text="SAVE"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:backgroundTint="@color/brown"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.5dp" />
+
+        <Button
+            android:id="@+id/pin_btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CANCEL"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@color/dark_red" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

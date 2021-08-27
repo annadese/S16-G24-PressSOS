@@ -1,5 +1,6 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,8 @@ public class EditNumActivity extends AppCompatActivity {
                     Toast.makeText(EditNumActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
+                    Intent i = new Intent(EditNumActivity.this, EnterPinActivity.class);
+                    startActivity(i);
                     finish();
                 }
             }

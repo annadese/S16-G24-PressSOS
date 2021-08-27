@@ -1,6 +1,5 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,32 +8,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EditNameActivity extends AppCompatActivity {
-
+public class EnterPinActivity extends AppCompatActivity {
     private Button btnsave, btncancel;
-    private EditText et_name;
-    private Account account;
-    private String name;
+    private EditText pin;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_settings_edit_name);
+        setContentView(R.layout.activity_enter_pin);
 
-        this.btnsave = findViewById(R.id.editname_btnsave);
-        this.btncancel = findViewById(R.id.editname_btncancel);
-        this.et_name = findViewById(R.id.editname_ptname);
+        this.pin = findViewById(R.id.pin_etpin);
+        this.btnsave = findViewById(R.id.pin_btnsave);
+        this.btncancel = findViewById(R.id.pin_btncancel);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
-                if(et_name.getText().toString().isEmpty()){
-                    Toast.makeText(EditNameActivity.this, "Please type something", Toast.LENGTH_LONG).show();
+                if(pin.getText().toString().isEmpty()){
+                    Toast.makeText(EnterPinActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Intent i = new Intent(EditNameActivity.this, EnterPinActivity.class);
-                    startActivity(i);
-                    finish();
+                    finish(); // to be used shared preferences
                 }
             }
         });
