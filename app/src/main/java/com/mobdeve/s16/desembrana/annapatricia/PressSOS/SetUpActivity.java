@@ -22,7 +22,7 @@ public class SetUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_up_account);
 
         this.btnsave = findViewById(R.id.setup_btn);
-        this.et_name = findViewById(R.id.setup_ptname);
+        this.et_name = findViewById(R.id.editEmergencyContacts_etname);
         this.et_num = findViewById(R.id.setup_ptcontact);
         this.et_pin1 = findViewById(R.id.setup_pwpin1);
         this.et_pin2 = findViewById(R.id.setup_pwpin2);

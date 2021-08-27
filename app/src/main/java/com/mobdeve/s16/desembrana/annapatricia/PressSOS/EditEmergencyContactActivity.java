@@ -8,29 +8,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EditNameActivity extends AppCompatActivity {
+public class EditEmergencyContactActivity extends AppCompatActivity {
 
     private Button btnsave, btncancel;
-    private EditText et_name;
-    private Account account;
-    private String name;
+    private EditText et_name, et_num;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_settings_edit_name);
+        setContentView(R.layout.activity_emergency_contacts_edit);
 
-        this.btnsave = findViewById(R.id.editname_btnsave);
-        this.btncancel = findViewById(R.id.editname_btncancel);
-        this.et_name = findViewById(R.id.editname_ptname);
-
-       // name = account.getName();
-        //et_name.setText("name");
+        this.btnsave = findViewById(R.id.editContact_btnSave);
+        this.btncancel = findViewById(R.id.editContact_btnCancel);
+        this.et_name = findViewById(R.id.editEmergencyContacts_etname);
+        this.et_num = findViewById(R.id.editEmergencyContacts_etnum);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(et_name.getText().toString().isEmpty()){
-                    Toast.makeText(EditNameActivity.this, "Please type something", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EditEmergencyContactActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
                     finish();

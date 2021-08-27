@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/addEmergencyContacts_etname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -47,7 +47,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/addEmergencyContacts_etname" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addDmergencyContact_btnsave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -98,7 +98,7 @@
             app:strokeWidth="0.5dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/addDmergencyContact_btncancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
