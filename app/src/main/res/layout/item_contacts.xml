@@ -35,8 +35,9 @@
             android:layout_below="@+id/connect_help"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:width="200dp"
+            android:width="260dp"
             android:background="#FF777373"
+            android:fitsSystemWindows="false"
             android:gravity="center_horizontal" />
 
         <TextView

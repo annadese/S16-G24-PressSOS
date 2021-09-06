@@ -29,9 +29,14 @@ public class EditNumActivity extends AppCompatActivity {
                     Toast.makeText(EditNumActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Intent i = new Intent(EditNumActivity.this, EnterPinActivity.class);
-                    startActivity(i);
-                    finish();
+                    if(et_num.length() < 11){
+                        Toast.makeText(EditNumActivity.this, "Invalid Contact Number", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Intent i = new Intent(EditNumActivity.this, EnterPinActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
             }
         });

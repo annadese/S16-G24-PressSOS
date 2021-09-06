@@ -32,7 +32,33 @@ public class SetUpActivity extends AppCompatActivity {
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()){
+
+                if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()) {
+                    Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    if(et_num.length() < 11 || et_enum.length() < 11){
+                        Toast.makeText(SetUpActivity.this, "Invalid Contact Number", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        pin1 = Integer.parseInt(et_pin1.getText().toString());
+                        pin2 = Integer.parseInt(et_pin2.getText().toString());
+
+                        if(pin1 != pin2){
+                            Toast.makeText(SetUpActivity.this, "Pin does not match", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            name = et_name.toString().trim();
+                            num = et_num.toString().trim();
+                            pin1 = Integer.parseInt(et_pin1.getText().toString());
+
+                            account = new Account(name, num, pin1);
+                            Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+                            startActivity(i);
+                        }
+                    }
+                }
+                /*if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()){
                     Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
                 }
 
@@ -51,7 +77,7 @@ public class SetUpActivity extends AppCompatActivity {
                     else {
                         Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
                     }
-                }
+                }*/
             }
         });
     }

@@ -22,16 +22,23 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         this.btnsave = findViewById(R.id.addDmergencyContact_btnsave);
         this.btncancel = findViewById(R.id.addDmergencyContact_btncancel);
         this.et_name = findViewById(R.id.addEmergencyContacts_etname);
-        this.et_num = findViewById(R.id.addEmergencyContacts_etname);
+        this.et_num = findViewById(R.id.addEmergencyContacts_etnum);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if(et_name.getText().toString().isEmpty()){
-                    Toast.makeText(AddEmergencyContactActivity.this, "Please type something", Toast.LENGTH_LONG).show();
+                if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty()){
+                    Toast.makeText(AddEmergencyContactActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    finish();
+                    if(et_num.length() < 11){
+                        Toast.makeText(AddEmergencyContactActivity.this, "Invalid Contact Number", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Intent i = new Intent(AddEmergencyContactActivity.this, EnterPinActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
             }
         });

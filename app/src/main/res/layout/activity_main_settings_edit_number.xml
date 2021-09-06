@@ -27,7 +27,8 @@
         android:layout_marginTop="20dp"
         android:width="300dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="11"
         android:text="09178952449"
         android:textAlignment="center"
         android:textColor="#6C6868" />

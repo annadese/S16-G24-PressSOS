@@ -26,6 +26,7 @@
         android:layout_marginTop="54dp"
         android:ems="10"
         android:inputType="numberPassword"
+        android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />

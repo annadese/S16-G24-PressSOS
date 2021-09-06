@@ -55,7 +55,8 @@
         android:layout_marginTop="20dp"
         android:width="300dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="11"
         android:textColor="#000000" />
 
     <TextView
@@ -90,7 +91,8 @@
                 android:layout_weight="1"
                 android:width="145dp"
                 android:ems="10"
-                android:inputType="numberPassword" />
+                android:inputType="numberPassword"
+                android:maxLength="6" />
 
             <TextView
                 android:id="@+id/setup_tvpin1"
@@ -117,7 +119,8 @@
                 android:layout_weight="1"
                 android:width="145dp"
                 android:ems="10"
-                android:inputType="numberPassword" />
+                android:inputType="numberPassword"
+                android:maxLength="6" />
 
             <TextView
                 android:id="@+id/setup_tvpin2"
@@ -164,7 +167,8 @@
         android:layout_marginTop="20dp"
         android:width="300dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:maxLength="11"
         android:textColor="#000000" />
 
     <TextView

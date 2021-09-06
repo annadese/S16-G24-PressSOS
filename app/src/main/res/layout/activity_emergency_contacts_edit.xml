@@ -54,7 +54,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="number"
+        android:maxLength="11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone Number"
+        android:text="Contact Number"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -84,7 +85,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <Button
-            android:id="@+id/editContact_btnSave"
+            android:id="@+id/editEmergencyContacts_btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:includeFontPadding="false"
+            android:text="DELETE"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            app:backgroundTint="@color/black"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.5dp" />
+
+        <Button
+            android:id="@+id/editEmergencyContacts_btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -98,7 +114,7 @@
             app:strokeWidth="0.5dp" />
 
         <Button
-            android:id="@+id/editContact_btnCancel"
+            android:id="@+id/editEmergencyContacts_btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
