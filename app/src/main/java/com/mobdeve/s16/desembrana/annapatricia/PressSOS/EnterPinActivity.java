@@ -27,7 +27,12 @@ public class EnterPinActivity extends AppCompatActivity {
                     Toast.makeText(EnterPinActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    finish(); // to be used shared preferences
+                    if(pin.length() < 6){
+                        Toast.makeText(EnterPinActivity.this, "Pin must be 6 characters", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        finish(); // to be used shared preferences
+                    }
                 }
             }
         });

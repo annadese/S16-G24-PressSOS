@@ -41,20 +41,25 @@ public class SetUpActivity extends AppCompatActivity {
                         Toast.makeText(SetUpActivity.this, "Invalid Contact Number", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        pin1 = Integer.parseInt(et_pin1.getText().toString());
-                        pin2 = Integer.parseInt(et_pin2.getText().toString());
-
-                        if(pin1 != pin2){
-                            Toast.makeText(SetUpActivity.this, "Pin does not match", Toast.LENGTH_LONG).show();
+                        if(et_pin1.length() != 6 || et_pin2.length() != 6){
+                            Toast.makeText(SetUpActivity.this, "Pin must be 6 characters", Toast.LENGTH_LONG).show();
                         }
                         else{
-                            name = et_name.toString().trim();
-                            num = et_num.toString().trim();
                             pin1 = Integer.parseInt(et_pin1.getText().toString());
+                            pin2 = Integer.parseInt(et_pin2.getText().toString());
 
-                            account = new Account(name, num, pin1);
-                            Intent i = new Intent(SetUpActivity.this, MainActivity.class);
-                            startActivity(i);
+                            if(pin1 != pin2){
+                                Toast.makeText(SetUpActivity.this, "Pin does not match", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                name = et_name.toString().trim();
+                                num = et_num.toString().trim();
+                                pin1 = Integer.parseInt(et_pin1.getText().toString());
+
+                                account = new Account(name, num, pin1);
+                                Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+                                startActivity(i);
+                            }
                         }
                     }
                 }
