@@ -24,11 +24,21 @@ public class HomeFragment extends Fragment{
 
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if(btnAlarm.isChecked()) {
-                    alarmSound.start();
-                }
+                alarm(); // alarm sound is activated
             }
         });
         return view;
+    }
+
+
+    // function for the alarm sound
+    public void alarm(){
+        if (alarmSound.isPlaying()) { // alarm sound stops if the button is clicked while the alarm is playing
+            alarmSound.pause();
+            alarmSound.seekTo(0);
+        } else if(btnAlarm.isChecked()){ // alarm sound starts if the button is clicked while the alarm is off.
+            alarmSound.setLooping(true);
+            alarmSound.start();
+        }
     }
 }
