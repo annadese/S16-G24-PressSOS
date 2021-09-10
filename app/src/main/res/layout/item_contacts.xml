@@ -5,48 +5,63 @@
     android:id="@+id/vhcontacts_constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="10dp"
     android:background="@color/brown">
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:orientation="vertical"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/vhcontacts_tvname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Anna Patricia Desembrana"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_brown">
 
-        <TextView
-            android:id="@+id/line"
-            style="?android:attr/listSeparatorTextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="0.5dp"
-            android:layout_below="@+id/connect_help"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:width="260dp"
-            android:background="#FF777373"
-            android:fitsSystemWindows="false"
-            android:gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/vhcontacts_tvname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Contact Name"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/line"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/vhcontacts_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="09178255543"
-            android:textColor="#5A5555"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/line"
+                style="?android:attr/listSeparatorTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/connect_help"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:width="260dp"
+                android:background="#FF777373"
+                android:fitsSystemWindows="false"
+                android:gravity="center_horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/vhcontacts_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vhcontacts_tvname" />
+
+            <TextView
+                android:id="@+id/vhcontacts_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Contact Number"
+                android:textColor="#5A5555"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/line" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,10 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SetUpActivity extends AppCompatActivity {
+
+    private static final String TAG = "SetUpActivity";
+    public static final String SP_FILE_NAME = "sp";
 
     private Button btnsave;
     private EditText et_name, et_num, et_pin1, et_pin2, et_ename, et_enum;
@@ -85,5 +91,23 @@ public class SetUpActivity extends AppCompatActivity {
                 }*/
             }
         });
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause called");
+
+        SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(Keys.ACCOUNT_KEY.name(), true);
+        editor.putString(Keys.NAME_KEY.name(), this.et_name.getText().toString());
+        editor.putString(Keys.NUMBER_KEY.name(), this.et_num.getText().toString());
+        editor.putString(Keys.PIN_KEY.name(), this.et_num.getText().toString());
+        editor.putString(Keys.EMERGENCY_NAME_KEY.name(), this.et_num.getText().toString());
+        editor.putString(Keys.EMERGENCY_NUMBER_KEY.name(), this.et_num.getText().toString());
+        editor.putString(Keys.SOS_MESSAGE_KEY.name(), this.et_num.getText().toString());
+
+        editor.apply();
     }
 }
