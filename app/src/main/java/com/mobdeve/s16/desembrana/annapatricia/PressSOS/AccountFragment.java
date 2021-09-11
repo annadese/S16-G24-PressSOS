@@ -2,17 +2,21 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AccountFragment extends Fragment {
 
     private Button btneditname, btneditnum, btneditsos, btnclear;
+    private TextView tvname, tvnum, tvsos;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
@@ -21,6 +25,9 @@ public class AccountFragment extends Fragment {
         this.btneditnum = (Button) view.findViewById(R.id.mainset_btnnum);
         this.btneditsos = (Button) view.findViewById(R.id.mainset_btnsos);
         this.btnclear = (Button) view.findViewById(R.id.mainset_btnclear);
+
+        this.tvname = (TextView) view.findViewById(R.id.mainset_tvname);
+        this.tvnum = (TextView) view.findViewById(R.id.mainset_tvnum);
 
         btneditname.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -53,6 +60,20 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+        this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), "Name"));
+        this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), "Contact Number"));
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+
+        this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), "Name"));
+        this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), "Contact Number"));
     }
 }

@@ -22,11 +22,13 @@ public class SetUpActivity extends AppCompatActivity {
     private String name, num, e_name;
     private int pin1, pin2, e_num;
     private Account account;
+    private Boolean hasAccount;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up_account);
 
+        this.hasAccount = false;
         this.btnsave = findViewById(R.id.setup_btn);
         this.et_name = findViewById(R.id.editEmergencyContacts_etname);
         this.et_num = findViewById(R.id.setup_ptcontact);
@@ -34,6 +36,15 @@ public class SetUpActivity extends AppCompatActivity {
         this.et_pin2 = findViewById(R.id.setup_pwpin2);
         this.et_ename = findViewById(R.id.setup_ptemergencyname);
         this.et_enum = findViewById(R.id.setup_ptemergencynum);
+
+        SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        hasAccount = sp.getBoolean(Keys.ACCOUNT_KEY.name(), this.hasAccount);
+
+        if (hasAccount.equals(true)) {
+            Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
 
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +76,7 @@ public class SetUpActivity extends AppCompatActivity {
                                 account = new Account(name, num, pin1);
                                 Intent i = new Intent(SetUpActivity.this, MainActivity.class);
                                 startActivity(i);
+                                finish();
                             }
                         }
                     }
@@ -100,6 +112,7 @@ public class SetUpActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
+
         editor.putBoolean(Keys.ACCOUNT_KEY.name(), true);
         editor.putString(Keys.NAME_KEY.name(), this.et_name.getText().toString());
         editor.putString(Keys.NUMBER_KEY.name(), this.et_num.getText().toString());
