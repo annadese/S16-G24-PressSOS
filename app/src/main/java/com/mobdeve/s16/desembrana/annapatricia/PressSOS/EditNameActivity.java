@@ -42,8 +42,6 @@ public class EditNameActivity extends AppCompatActivity {
                     Toast.makeText(EditNameActivity.this, "Please type something", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    editor.putString(Keys.NAME_KEY.name(), name);
-                    editor.apply();
 
                     Intent i = new Intent(EditNameActivity.this, EnterPinActivity.class);
                     startActivity(i);

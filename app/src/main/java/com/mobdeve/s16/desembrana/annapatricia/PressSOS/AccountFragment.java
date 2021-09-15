@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class AccountFragment extends Fragment {
 
     private Button btneditname, btneditnum, btneditsos, btnclear;
     private TextView tvname, tvnum, tvsos;
+    private String name, contactnum;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
@@ -61,8 +63,11 @@ public class AccountFragment extends Fragment {
         });
 
         SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
-        this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), "Name"));
-        this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), "Contact Number"));
+        name = sp.getString(Keys.NAME_KEY.name(), "Name");
+        contactnum = sp.getString(Keys.NUMBER_KEY.name(), "Contact Number");
+
+        this.tvname.setText(name);
+        this.tvnum.setText(contactnum);
 
         return view;
     }
@@ -70,10 +75,10 @@ public class AccountFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        Log.d("AccountFragment1: ", "onResume");
         SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
 
-        this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), "Name"));
-        this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), "Contact Number"));
+        this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), name));
+        this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), contactnum));
     }
 }

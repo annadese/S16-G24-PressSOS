@@ -1,6 +1,8 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ public class EditNumActivity extends AppCompatActivity {
 
     private Button btnsave, btncancel;
     private EditText et_num;
+    private String num;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -21,6 +24,12 @@ public class EditNumActivity extends AppCompatActivity {
         this.btnsave = findViewById(R.id.editnum_btnsave);
         this.btncancel = findViewById(R.id.editnum_btncancel);
         this.et_num = findViewById(R.id.editnum_ptname);
+
+        SharedPreferences sp = getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        num = sp.getString(Keys.NUMBER_KEY.name(), "Name");
+        this.et_num.setText(num);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override

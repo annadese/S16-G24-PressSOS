@@ -19,8 +19,8 @@ public class SetUpActivity extends AppCompatActivity {
 
     private Button btnsave;
     private EditText et_name, et_num, et_pin1, et_pin2, et_ename, et_enum;
-    private String name, num, e_name;
-    private int pin1, pin2, e_num;
+    private String name, num;
+    private String pin1, pin2;
     private Account account;
     private Boolean hasAccount;
 
@@ -28,7 +28,6 @@ public class SetUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up_account);
 
-        this.hasAccount = false;
         this.btnsave = findViewById(R.id.setup_btn);
         this.et_name = findViewById(R.id.editEmergencyContacts_etname);
         this.et_num = findViewById(R.id.setup_ptcontact);
@@ -36,11 +35,13 @@ public class SetUpActivity extends AppCompatActivity {
         this.et_pin2 = findViewById(R.id.setup_pwpin2);
         this.et_ename = findViewById(R.id.setup_ptemergencyname);
         this.et_enum = findViewById(R.id.setup_ptemergencynum);
+        this.hasAccount = false;
 
         SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
         hasAccount = sp.getBoolean(Keys.ACCOUNT_KEY.name(), this.hasAccount);
 
-        if (hasAccount.equals(true)) {
+        // if an account already exists, skip Setup Activity
+        if (hasAccount == false) {
             Intent i = new Intent(SetUpActivity.this, MainActivity.class);
             startActivity(i);
             finish();
@@ -50,20 +51,21 @@ public class SetUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // validation for Set Up
                 if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()) {
                     Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
                 }
                 else{
                     if(et_num.length() < 11 || et_enum.length() < 11){
                         Toast.makeText(SetUpActivity.this, "Invalid Contact Number", Toast.LENGTH_LONG).show();
-                    }
+                    } 
                     else{
                         if(et_pin1.length() != 6 || et_pin2.length() != 6){
                             Toast.makeText(SetUpActivity.this, "Pin must be 6 characters", Toast.LENGTH_LONG).show();
                         }
                         else{
-                            pin1 = Integer.parseInt(et_pin1.getText().toString());
-                            pin2 = Integer.parseInt(et_pin2.getText().toString());
+                            pin1 = et_pin1.getText().toString();
+                            pin2 = et_pin2.getText().toString();
 
                             if(pin1 != pin2){
                                 Toast.makeText(SetUpActivity.this, "Pin does not match", Toast.LENGTH_LONG).show();
@@ -71,9 +73,22 @@ public class SetUpActivity extends AppCompatActivity {
                             else{
                                 name = et_name.toString().trim();
                                 num = et_num.toString().trim();
-                                pin1 = Integer.parseInt(et_pin1.getText().toString());
+                                pin1 = et_pin1.getText().toString();
 
                                 account = new Account(name, num, pin1);
+
+                                SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+
+                                editor.putBoolean(Keys.ACCOUNT_KEY.name(), true);
+                                editor.putString(Keys.NAME_KEY.name(), account.getName());
+                                editor.putString(Keys.NUMBER_KEY.name(), account.getNum());
+                                editor.putString(Keys.PIN_KEY.name(), account.getPin());
+
+                                editor.apply();
+
+                                // Add
+
                                 Intent i = new Intent(SetUpActivity.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
@@ -103,24 +118,5 @@ public class SetUpActivity extends AppCompatActivity {
                 }*/
             }
         });
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Log.d(TAG, "onPause called");
-
-        SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-
-        editor.putBoolean(Keys.ACCOUNT_KEY.name(), true);
-        editor.putString(Keys.NAME_KEY.name(), this.et_name.getText().toString());
-        editor.putString(Keys.NUMBER_KEY.name(), this.et_num.getText().toString());
-        editor.putString(Keys.PIN_KEY.name(), this.et_num.getText().toString());
-        editor.putString(Keys.EMERGENCY_NAME_KEY.name(), this.et_num.getText().toString());
-        editor.putString(Keys.EMERGENCY_NUMBER_KEY.name(), this.et_num.getText().toString());
-        editor.putString(Keys.SOS_MESSAGE_KEY.name(), this.et_num.getText().toString());
-
-        editor.apply();
     }
 }
