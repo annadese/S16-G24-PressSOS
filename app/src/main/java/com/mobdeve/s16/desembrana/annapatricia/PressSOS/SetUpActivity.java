@@ -67,15 +67,13 @@ public class SetUpActivity extends AppCompatActivity {
                         else{
                             pin1 = et_pin1.getText().toString();
                             pin2 = et_pin2.getText().toString();
-                            Log.d("SETUP1: ", pin1);
-                            Log.d("SETUP1: ", pin2);
 
                             if(!pin1.equals(pin2)){
                                 Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
                             }
                             else{
-                                name = et_name.toString().trim();
-                                num = et_num.toString().trim();
+                                name = et_name.getText().toString().trim();
+                                num = et_num.getText().toString().trim();
                                 pin1 = et_pin1.getText().toString();
 
                                 account = new Account(name, num, pin1);
@@ -92,7 +90,7 @@ public class SetUpActivity extends AppCompatActivity {
 
                                 // Add
 
-                                Intent i = new Intent(SetUpActivity.this, InfoActivity .class);
+                                Intent i = new Intent(SetUpActivity.this, InfoActivity.class);
                                 startActivity(i);
                                 finish();
                             }
