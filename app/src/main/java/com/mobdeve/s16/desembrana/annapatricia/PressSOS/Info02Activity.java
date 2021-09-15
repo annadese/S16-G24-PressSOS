@@ -1,6 +1,5 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,7 @@ public class Info02Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.how_to_two);
+        setContentView(R.layout.activity_how_to_two);
 
         Button next2 = findViewById(R.id.howto_next2);
         next2.setOnClickListener(new View.OnClickListener() {

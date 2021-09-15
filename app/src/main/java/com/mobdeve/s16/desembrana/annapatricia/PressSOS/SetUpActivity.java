@@ -3,6 +3,7 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -61,14 +62,16 @@ public class SetUpActivity extends AppCompatActivity {
                     } 
                     else{
                         if(et_pin1.length() != 6 || et_pin2.length() != 6){
-                            Toast.makeText(SetUpActivity.this, "Pin must be 6 characters", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SetUpActivity.this, "PIN must be 6 digits", Toast.LENGTH_LONG).show();
                         }
                         else{
                             pin1 = et_pin1.getText().toString();
                             pin2 = et_pin2.getText().toString();
+                            Log.d("SETUP1: ", pin1);
+                            Log.d("SETUP1: ", pin2);
 
-                            if(pin1 != pin2){
-                                Toast.makeText(SetUpActivity.this, "Pin does not match", Toast.LENGTH_LONG).show();
+                            if(!pin1.equals(pin2)){
+                                Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
                             }
                             else{
                                 name = et_name.toString().trim();
@@ -89,7 +92,7 @@ public class SetUpActivity extends AppCompatActivity {
 
                                 // Add
 
-                                Intent i = new Intent(SetUpActivity.this, MainActivity.class);
+                                Intent i = new Intent(SetUpActivity.this, InfoActivity .class);
                                 startActivity(i);
                                 finish();
                             }
