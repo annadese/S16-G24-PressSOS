@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -74,26 +75,25 @@ public class DbHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
-    /*public Contact getOne(int id) {
-        Contact contact;
+    public Contact getOneContact(String query) {
         SQLiteDatabase database = this.getReadableDatabase();
+        Contact contact;
 
-        Cursor c = null;
+        Cursor TuplePointer = database.rawQuery(
+                "SELECT * FROM " + DbReferences.TABLEc_NAME +
+                        " WHERE " + DbReferences.COLUMN_NUMBER +
+                        " = '" + query + "'",
+                null);
 
-        String query = "SELECT * FROM " + DbReferences.TABLEc_NAME +
-                " WHERE idc = '" + id + "'" ;
+        TuplePointer.moveToFirst();
+        contact = new Contact(
+                TuplePointer.getString(TuplePointer.getColumnIndexOrThrow((DbReferences.COLUMN_NAME))),
+                TuplePointer.getString(TuplePointer.getColumnIndexOrThrow((DbReferences.COLUMN_NUMBER))),
+                TuplePointer.getLong(TuplePointer.getColumnIndexOrThrow((DbReferences._IDc)))
+        );
 
-        if(database != null)
-            c = database.rawQuery(query, null);
-
-        if (c != null) {
-            while(c.moveToNext())
-                contact.
-        }
-
-        return posts;
-
-    }*/
+        return contact;
+    }
 
     public ArrayList<Location> getAllLocationsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
@@ -167,6 +167,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void updateContact(Contact cOld, Contact cNew) {
         boolean withChanges = false;
         ContentValues values = new ContentValues();
+        Log.d("checker2: ", Long.toString(cOld.getId()));
 
         if(!cNew.getName().equals(cOld.getName())) {
             values.put(DbReferences.COLUMN_NAME, cNew.getName());
@@ -184,7 +185,8 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbReferences.TABLEc_NAME,
                     values,
                     DbReferences._IDc + " = ?",
-                    new String[]{String.valueOf(cNew.getId())});
+                    new String[]{String.valueOf(cOld.getId())});
+            database.close();
         }
     }
 
@@ -195,6 +197,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String strSQL = "DELETE FROM contacts WHERE idc = " + id;
         database.execSQL(strSQL);
+        database.close();
     }
 
     public void deleteAllLocations(Contact c) {

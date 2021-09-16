@@ -52,12 +52,12 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
 
                         if (res != null) {
                             if (bPin) {
-
-                                Contact oldC = new Contact(existingName, existingNum);
                                 Contact newC = new Contact(et_name.getText().toString(), et_num.getText().toString());
 
                                 Log.d("checker", newC.getName());
                                 Log.d("checker", newC.getContactNumber());
+
+                                Contact oldC = helper.getOneContact(existingNum);
 
                                 helper.updateContact(oldC, newC);
 
