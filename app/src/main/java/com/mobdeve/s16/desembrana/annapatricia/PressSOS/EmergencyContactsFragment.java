@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,8 +39,14 @@ public class EmergencyContactsFragment extends Fragment {
         btnaddcontact.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
-                EmergencyContactsFragment.this.startActivity(intent);
+                data = helper.getAllContactsDefault();
+
+                if (data.size() < 5) {
+                    Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
+                    EmergencyContactsFragment.this.startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "Can only store up to 5 emergency contacts", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
