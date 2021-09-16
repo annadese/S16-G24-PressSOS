@@ -137,7 +137,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
         long result = database.insert(DbReferences.TABLEc_NAME, null, values);
 
-        //database.close();
+        database.close();
 
         if(result == -1)
             return false;
@@ -146,7 +146,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public synchronized void insertLocation(Location l) {
+    public synchronized boolean insertLocation(Location l) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
@@ -156,9 +156,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
-        database.insert(DbReferences.TABLEc_NAME, null, values);
+        long result = database.insert(DbReferences.TABLEl_NAME, null, values);
 
         database.close();
+
+        if(result == -1)
+            return false;
+        else
+            return true;
     }
 
     // Performs an UPDATE operation by comparing the old contact with the new contact. This method
