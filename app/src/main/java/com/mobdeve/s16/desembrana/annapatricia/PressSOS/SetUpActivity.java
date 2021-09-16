@@ -84,6 +84,7 @@ public class SetUpActivity extends AppCompatActivity {
                                 editor.putBoolean(Keys.ACCOUNT_KEY.name(), true);
                                 editor.putString(Keys.NAME_KEY.name(), account.getName());
                                 editor.putString(Keys.NUMBER_KEY.name(), account.getNum());
+                                editor.putString(Keys.SOS_MESSAGE_KEY.name(), account.getSosText());
                                 editor.putString(Keys.PIN_KEY.name(), account.getPin());
 
                                 editor.apply();

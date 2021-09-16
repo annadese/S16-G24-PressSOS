@@ -59,7 +59,6 @@ public class EditNumActivity extends AppCompatActivity {
         this.et_num = findViewById(R.id.editnum_ptname);
 
         SharedPreferences sp = getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
 
         num = sp.getString(Keys.NUMBER_KEY.name(), "Name");
         this.et_num.setText(num);

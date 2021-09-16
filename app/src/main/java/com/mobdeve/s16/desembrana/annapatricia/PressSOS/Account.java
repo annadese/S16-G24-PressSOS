@@ -10,7 +10,9 @@ public class Account {
         this.name = name;
         this.num = num;
         this.pin = pin;
-        this.sosText = "This is an EMERGENCY! Your friend, " + this.name + ", needs help! Click the link to see her current location: ";
+
+        // default SOS message
+        this.sosText = "This is an EMERGENCY! Your friend, " + this.name + ", needs help! Click the link to see his/her current location: ";
     }
 
     public String getName(){ return name; }
