@@ -64,7 +64,8 @@ public class DbHelper extends SQLiteOpenHelper {
         while(c.moveToNext()) {
             contacts.add(new Contact(
                     c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME)),
-                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER))
+                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER)),
+                    c.getLong(c.getColumnIndexOrThrow(DbReferences._IDc))
             ));
         }
         c.close();
@@ -184,13 +185,12 @@ public class DbHelper extends SQLiteOpenHelper {
                     values,
                     DbReferences._IDc + " = ?",
                     new String[]{String.valueOf(cNew.getId())});
-
         }
     }
 
     // The delete contact method that takes in a contact object and uses its ID to find and delete
     // the entry.
-    public void deleteContact(Context context, int id) {
+    public void deleteContact(Context context, long id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         String strSQL = "DELETE FROM contacts WHERE idc = " + id;

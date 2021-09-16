@@ -56,6 +56,9 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                                 Contact oldC = new Contact(existingName, existingNum);
                                 Contact newC = new Contact(et_name.getText().toString(), et_num.getText().toString());
 
+                                Log.d("checker", newC.getName());
+                                Log.d("checker", newC.getContactNumber());
+
                                 helper.updateContact(oldC, newC);
 
                                 finish();
@@ -84,8 +87,7 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.existingName = intent.getStringExtra(CURRENT_NAME);
         this.existingNum = intent.getStringExtra(CURRENT_NUMBER);
-        int id = intent.getIntExtra(CURRENT_ID, 0);
-        //Log.d("checker", String.valueOf(id));
+        long id = intent.getLongExtra(CURRENT_ID, 0);
 
         this.et_name.setText(existingName);
         this.et_num.setText(existingNum);

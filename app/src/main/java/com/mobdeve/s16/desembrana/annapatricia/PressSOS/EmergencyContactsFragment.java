@@ -2,6 +2,7 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class EmergencyContactsFragment extends Fragment {
         });
 
         this.cAdapter = new AdapterContacts(helper.getAllContactsDefault());
+    //    Log.d("checker1", Integer.toString(helper.getAllContactsDefault().get(1).getId()));
         this.recyclerView.setAdapter(this.cAdapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 

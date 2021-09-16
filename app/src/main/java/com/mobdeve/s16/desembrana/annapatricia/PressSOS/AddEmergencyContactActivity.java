@@ -70,6 +70,4 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         else
             Toast.makeText(this, "Failed to Add Contact", Toast.LENGTH_SHORT).show();
     }
-
-
 }

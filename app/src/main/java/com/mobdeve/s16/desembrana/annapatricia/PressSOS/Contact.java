@@ -2,7 +2,7 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 public class Contact {
 
-    private int id;
+    private long id;
     private String name;
     private String contactNumber;
 
@@ -11,7 +11,7 @@ public class Contact {
         this.contactNumber = contactNumber;
     }
 
-    public Contact (String name, String contactNumber, int id) {
+    public Contact (String name, String contactNumber, long id) {
         this.name = name;
         this.contactNumber = contactNumber;
         this.id = id;
@@ -19,7 +19,7 @@ public class Contact {
 
     public String getName() { return name; }
     public String getContactNumber() { return contactNumber; }
-    public int getId() {
+    public long getId() {
         return id;
     }
 
