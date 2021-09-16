@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
             android:includeFontPadding="false"
-            android:text="SAVE"
+            android:text="OK"
             android:textAlignment="center"
             android:textColor="#000000"
             app:backgroundTint="@color/brown"

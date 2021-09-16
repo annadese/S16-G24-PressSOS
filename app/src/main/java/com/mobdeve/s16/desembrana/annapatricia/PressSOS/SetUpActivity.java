@@ -46,9 +46,10 @@ public class SetUpActivity extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
         hasAccount = sp.getBoolean(Keys.ACCOUNT_KEY.name(), this.hasAccount);
+        Log.d("SetUpActivity1: ", hasAccount.toString());
 
         // if an account already exists, skip Setup Activity
-        if (hasAccount == false) {
+        if (hasAccount) {
             Intent i = new Intent(SetUpActivity.this, MainActivity.class);
             startActivity(i);
             finish();

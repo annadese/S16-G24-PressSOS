@@ -1,5 +1,7 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -12,13 +14,19 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class HomeFragment extends Fragment{
     private Button btnSOS;
     private Switch btnAlarm;
     private MediaPlayer alarmSound;
+    private DbHelper helper;
+    ArrayList<Contact> contacts;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        helper = new DbHelper(getContext());
 
         this.alarmSound = MediaPlayer.create(getActivity(), R.raw.alarm);
         this.btnSOS = (Button)view.findViewById(R.id.main_btnsos);
@@ -26,15 +34,15 @@ public class HomeFragment extends Fragment{
 
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                alarm(); // alarm sound is activated
-                sendTextMessage();
+                alarm();            // alarm sound is activated
+                sendTextMessage();  // SOS message is sent to all emergency contacts
             }
         });
         return view;
     }
 
 
-    // function for the alarm sound
+    // method for the alarm sound
     public void alarm(){
         if (alarmSound.isPlaying()) { // alarm sound stops if the button is clicked while the alarm is playing
             alarmSound.pause();
@@ -45,9 +53,21 @@ public class HomeFragment extends Fragment{
         }
     }
 
+    // method for sending SOS message to all emergency contacts
     protected void sendTextMessage() {
         SmsManager smsManager = SmsManager.getDefault();
-        //smsManager.sendTextMessage();
+        SharedPreferences sp = this.getContext().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+        contacts = helper.getAllContactsDefault();
+
+        String sos = sp.getString(Keys.SOS_MESSAGE_KEY.name(), "SOS Message");
+
+        // send text to all emergency contacts
+        for (int i = 0; i < 5; i++) {
+            if (!contacts.get(i).equals(null)) {
+                smsManager.sendTextMessage(contacts.get(i).getContactNumber(), null, sos, null, null);
+            }
+        }
+
         Toast.makeText(this.getContext(), "SOS sent", Toast.LENGTH_LONG).show();
     }
 }

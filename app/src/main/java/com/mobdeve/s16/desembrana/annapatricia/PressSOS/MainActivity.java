@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    // request permission for sending SMS messages
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
