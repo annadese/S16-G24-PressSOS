@@ -42,8 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:width="300dp"
+        android:gravity="start"
         android:text="Name"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="16sp" />
 
@@ -65,13 +66,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:width="300dp"
+        android:gravity="start"
         android:text="Contact Number"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
@@ -99,8 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="PIN"
-                android:textAlignment="center"
+                android:gravity="start"
+                android:text="6-digit PIN"
+                android:textAlignment="textStart"
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
@@ -116,6 +119,7 @@
                 android:id="@+id/setup_pwpin2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:width="145dp"
                 android:ems="10"
@@ -128,8 +132,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="Re-enter PIN"
-                android:textAlignment="center"
+                android:gravity="start"
+                android:text="Confirm PIN"
+                android:textAlignment="textStart"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -154,8 +159,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:width="300dp"
+        android:gravity="start"
         android:text="Emergency Contact Name"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="16sp" />
 
@@ -178,8 +184,9 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:width="300dp"
+        android:gravity="start"
         android:text="Emergency Contact Number"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="16sp" />
 

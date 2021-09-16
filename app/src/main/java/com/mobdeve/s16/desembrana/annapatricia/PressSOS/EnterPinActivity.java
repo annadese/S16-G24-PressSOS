@@ -1,5 +1,9 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class EnterPinActivity extends AppCompatActivity {
+
     private Button btnsave, btncancel;
     private EditText pin;
 
@@ -28,10 +33,17 @@ public class EnterPinActivity extends AppCompatActivity {
                 }
                 else {
                     if(pin.length() < 6){
-                        Toast.makeText(EnterPinActivity.this, "Pin must be 6 characters", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EnterPinActivity.this, "PIN must be 6 characters", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        finish(); // to be used shared preferences
+                        if (!checkPin(pin.getText().toString())) {
+                            Toast.makeText(EnterPinActivity.this, "Incorrect PIN", Toast.LENGTH_LONG).show();
+                        } else {
+                            Intent i = new Intent();
+                            i.putExtra("pin_result", true);
+                            setResult(Activity.RESULT_OK, i);
+                            finish();
+                        }
                     }
                 }
             }
@@ -40,8 +52,24 @@ public class EnterPinActivity extends AppCompatActivity {
         btncancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Intent i = new Intent();
+                i.putExtra("pin_result", false);
+                setResult(Activity.RESULT_OK, i);
                 finish();
             }
         });
+    }
+
+    private Boolean checkPin (String pin) {
+        Boolean bool = false;
+
+        SharedPreferences sp = getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+        String sp_pin = sp.getString(Keys.PIN_KEY.name(), "PIN");
+
+        if (pin.equals(sp_pin)) {
+            bool = true;
+        }
+
+        return bool;
     }
 }
