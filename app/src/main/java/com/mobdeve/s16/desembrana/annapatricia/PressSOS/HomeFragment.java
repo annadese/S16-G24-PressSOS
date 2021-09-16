@@ -8,8 +8,6 @@ import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment{
             public void onClick(View v) {
                 alarm();            // alarm sound is activated
                 getLocation();
-                //sendTextMessage();  // SOS message is sent to all emergency contacts
+        //        sendTextMessage();  // SOS message is sent to all emergency contacts
             }
         });
         return view;
@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment{
             if(getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED){
                 //get location
-                fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<android.location.Location>() {
+                fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         if(location != null){
