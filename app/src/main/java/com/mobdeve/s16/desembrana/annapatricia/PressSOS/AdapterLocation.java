@@ -38,8 +38,8 @@ public class AdapterLocation extends RecyclerView.Adapter<ViewHolderLocation> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderLocation holder, int position) {
-        holder.setTvLocation(locations.get(position).getLocationName());
-        holder.setTvTime(locations.get(position).getTime().toString());
+        holder.setTvLocation(locations.get(position).getLatitude());
+        holder.setTvTime(locations.get(position).getDate().toString());
     }
 
     @Override

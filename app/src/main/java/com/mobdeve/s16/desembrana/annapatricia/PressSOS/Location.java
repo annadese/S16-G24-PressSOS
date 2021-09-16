@@ -4,17 +4,20 @@ import java.util.Date;
 
 public class Location {
 
-    private String locationName;
-    private Date timestamp;
+    private String lat, longt;
+    private Date dDate;
 
-    public Location (String locationName, Date timestamp) {
-        this.locationName = locationName;
-        this.timestamp = timestamp;
+    public Location (String lat, String longt, Date dDate) {
+        this.lat = lat;
+        this.longt = longt;
+        this.dDate = dDate;
     }
 
-    public String getLocationName() { return locationName; }
-    public Date getTime() { return timestamp; }
+    public String getLatitude() { return lat; }
+    public String getLongitude() { return longt; }
+    public Date getDate() { return dDate; }
 
-    public void setLocationName() {this.locationName = locationName; }
-    public void setTime(Date timestamp) { this.timestamp = timestamp; }
+    public void setLatitude(String lat) {this.lat = lat; }
+    public void setLongitude(String longt) {this.longt = longt; }
+    public void setLatitude(Date dDate) {this.dDate = dDate; }
 }

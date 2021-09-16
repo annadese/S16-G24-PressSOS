@@ -110,12 +110,12 @@ public class DbHelper extends SQLiteOpenHelper {
         ArrayList<Location> locations = new ArrayList<>();
         while(c.moveToNext()) {
             try {
-                date = dateFormat.parse(c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_TIME)));
+                date = dateFormat.parse(c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_DATE)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
             locations.add(new Location(
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LOCATION)),
+                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)), c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LONG)),
                 date
             ));
         }
@@ -151,8 +151,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(DbReferences.COLUMN_LOCATION, l.getLocationName());
-        values.put(DbReferences.COLUMN_TIME, dateFormat.format(l.getTime()));
+        values.put(DbReferences.COLUMN_LAT, l.getLatitude());
+        values.put(DbReferences.COLUMN_LONG, l.getLongitude());
+        values.put(DbReferences.COLUMN_DATE, dateFormat.format(l.getDate()));
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
@@ -222,8 +223,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 _IDl = "idl",
                 COLUMN_NAME = "name",
                 COLUMN_NUMBER = "number",
-                COLUMN_LOCATION = "location",
-                COLUMN_TIME = "time";
+                COLUMN_LAT = "latitude",
+                COLUMN_LONG = "longitude",
+                COLUMN_DATE = "date";
 
         private static final String CREATE_CONTACT_TABLE_STATEMENT =
                 "CREATE TABLE IF NOT EXISTS " + TABLEc_NAME + " (" +
@@ -234,7 +236,8 @@ public class DbHelper extends SQLiteOpenHelper {
         private static final String CREATE_LOCATION_TABLE_STATEMENT =
                 "CREATE TABLE IF NOT EXISTS " + TABLEl_NAME + " (" +
                         _IDl + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_LOCATION + " TEXT)";
+                        COLUMN_LAT + " TEXT, " +
+                        COLUMN_LONG + " TEXT)";
 
         private static final String DROP_CONTACT_TABLE_STATEMENT =
                 "DROP TABLE IF EXISTS " + TABLEc_NAME;

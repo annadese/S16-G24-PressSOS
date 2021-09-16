@@ -22,7 +22,9 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HomeFragment extends Fragment{
     private Button btnSOS;
@@ -64,6 +66,11 @@ public class HomeFragment extends Fragment{
                             Double lat = location.getLatitude();
                             Double longt = location.getLongitude();
 
+                            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+                            Date date = new Date(new Date().getTime());
+                            //txt_date.setText(dFormat.format(date));
+
+                            //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));
                             //textView.setText(lat+ " , " + longt);
                             Toast.makeText(getActivity(), lat + ", " + longt, Toast.LENGTH_SHORT).show();
                         }

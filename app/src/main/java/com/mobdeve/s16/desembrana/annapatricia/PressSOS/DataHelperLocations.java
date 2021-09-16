@@ -17,15 +17,15 @@ public class DataHelperLocations {
         Date date3=new SimpleDateFormat("dd/MM/yyyy").parse(date[2]);
 
         locations.add(new Location(
-                "Pasig City",
+                "110.25","Pasig City",
                 date1));
 
         locations.add(new Location(
-                "Quezon City",
+                "250.002", "Quezon City",
                 date2));
 
         locations.add(new Location(
-                "Tagaytay City",
+                "48585.256","Tagaytay City",
                 date3));
         Collections.shuffle(locations);
 
