@@ -75,9 +75,9 @@ public class AccountFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("AccountFragment1: ", "onResume");
-        SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
 
+        SharedPreferences sp = this.getActivity().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
+        Log.d("AccountFragment1: ", sp.getString(Keys.NAME_KEY.name(), name));
         this.tvname.setText(sp.getString(Keys.NAME_KEY.name(), name));
         this.tvnum.setText(sp.getString(Keys.NUMBER_KEY.name(), contactnum));
     }
