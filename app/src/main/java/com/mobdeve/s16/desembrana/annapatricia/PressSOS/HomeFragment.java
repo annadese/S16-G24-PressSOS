@@ -3,11 +3,14 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class HomeFragment extends Fragment{
     private Button btnSOS;
@@ -24,6 +27,7 @@ public class HomeFragment extends Fragment{
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 alarm(); // alarm sound is activated
+                sendTextMessage();
             }
         });
         return view;
@@ -39,5 +43,11 @@ public class HomeFragment extends Fragment{
             alarmSound.setLooping(true);
             alarmSound.start();
         }
+    }
+
+    protected void sendTextMessage() {
+        SmsManager smsManager = SmsManager.getDefault();
+        //smsManager.sendTextMessage();
+        Toast.makeText(this.getContext(), "SOS sent", Toast.LENGTH_LONG).show();
     }
 }

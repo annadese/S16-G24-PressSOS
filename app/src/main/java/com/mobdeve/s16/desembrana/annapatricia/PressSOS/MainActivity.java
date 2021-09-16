@@ -2,9 +2,14 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +23,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-//    public static final int
+    public static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
 
     private BottomNavigationView bottomNav;
 
@@ -27,8 +32,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_bar);
 
-        this.bottomNav = findViewById(R.id.bottomNavigationView);
+        // check if the permission is not granted
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
 
+            //if permission is not granted, then check if the user has denied the permission
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
+
+            } else { // a pop-up will appear asking for the required permission
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+
+        this.bottomNav = findViewById(R.id.bottomNavigationView);
         this.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
 
@@ -72,5 +87,21 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // will check the requestCode
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                // check whether the length of the grantResults is greater than 0 and is equal to PERMISSION_GRANTED
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission granted", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
 
 }
