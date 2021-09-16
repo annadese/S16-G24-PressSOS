@@ -117,13 +117,12 @@
 
             <EditText
                 android:id="@+id/setup_pwpin2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:width="145dp"
                 android:ems="10"
-                android:gravity="right"
                 android:inputType="numberPassword"
                 android:maxLength="6" />
 

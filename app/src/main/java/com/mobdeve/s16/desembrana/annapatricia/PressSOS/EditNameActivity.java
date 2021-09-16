@@ -23,7 +23,6 @@ import java.security.Key;
 public class EditNameActivity extends AppCompatActivity {
 
     private static final String TAG = "EditNameActivity1";
-    int LAUNCH_SECOND_ACTIVITY = 1;
 
     private Button btnsave, btncancel;
     private EditText et_name;
@@ -38,12 +37,10 @@ public class EditNameActivity extends AppCompatActivity {
                     SharedPreferences sp = getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
 
-                    Log.d(TAG, "entered activity result launcher");
-
                     if(result.getResultCode() == Activity.RESULT_OK) {
                         Intent res = result.getData();
                         Boolean bPin = res.getBooleanExtra("pin_result", false);
-                        Log.d(TAG, bPin.toString());
+
                         if (res != null) {
                             if (bPin) {
                                 editor.putString(Keys.NAME_KEY.name(), et_name.getText().toString());
@@ -52,7 +49,7 @@ public class EditNameActivity extends AppCompatActivity {
                             }
                         }
                     } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                        Log.d(TAG, "CANCELLED");
+                        Log.d(TAG, "Cancelled");
                     }
                 }
             });
