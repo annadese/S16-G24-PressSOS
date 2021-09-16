@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditEmergencyContactActivity extends AppCompatActivity {
 
+    public static final String
+        CURRENT_NAME = "CURRENT_NAME",
+        CURRENT_NUMBER = "CURRENT_NUMBER";
+
     private Button btnsave, btndelete, btncancel;
     private EditText et_name, et_num;
 
@@ -24,6 +28,13 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         this.et_name = findViewById(R.id.editEmergencyContacts_etname);
         this.et_num = findViewById(R.id.editEmergencyContacts_etnum);
 
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(CURRENT_NAME);
+        String contactNumber = intent.getStringExtra(CURRENT_NUMBER);
+
+        this.et_name.setText(name);
+        this.et_num.setText(contactNumber);
+
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -36,7 +47,13 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                     }
                     else {
                         Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
+
+
+
                         startActivity(i);
+
+                        // insert code for editing contact in db
+
                         finish();
                     }
                 }

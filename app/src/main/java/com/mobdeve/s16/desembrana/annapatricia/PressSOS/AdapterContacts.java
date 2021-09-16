@@ -30,6 +30,10 @@ public class AdapterContacts extends RecyclerView.Adapter<ViewHolderContacts> {
             public void onClick(View v) {
 
                 Intent intent = new Intent(parent.getContext(), EditEmergencyContactActivity.class);
+
+                intent.putExtra("CURRENT_NAME", contacts.get(viewHolderContacts.getAdapterPosition()).getName());
+                intent.putExtra("CURRENT_NUMBER", contacts.get(viewHolderContacts.getAdapterPosition()).getContactNumber());
+
                 parent.getContext().startActivity(intent);
             }
         });

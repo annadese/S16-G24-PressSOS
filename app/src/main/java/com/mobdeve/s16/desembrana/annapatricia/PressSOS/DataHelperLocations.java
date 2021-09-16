@@ -18,18 +18,15 @@ public class DataHelperLocations {
 
         locations.add(new Location(
                 "Pasig City",
-                date1,
-                01));
+                date1));
 
         locations.add(new Location(
                 "Quezon City",
-                date2,
-                02));
+                date2));
 
         locations.add(new Location(
                 "Tagaytay City",
-                date3,
-                03));
+                date3));
         Collections.shuffle(locations);
 
         return locations;

@@ -64,8 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
         while(c.moveToNext()) {
             contacts.add(new Contact(
                     c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME)),
-                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER)),
-                    c.getLong(c.getColumnIndexOrThrow(DbReferences._IDc))
+                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER))
             ));
         }
         c.close();
@@ -95,8 +94,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }
             locations.add(new Location(
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LOCATION)),
-                date,
-                c.getLong(c.getColumnIndexOrThrow(DbReferences._IDl))
+                date
             ));
         }
         c.close();
@@ -105,7 +103,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return locations;
     }
 
-    public synchronized void insertContact(Contact c) {
+    public synchronized boolean insertContact(Contact c) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
@@ -115,9 +113,15 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
-        database.insert(DbReferences.TABLEc_NAME, null, values);
+        long result = database.insert(DbReferences.TABLEc_NAME, null, values);
 
-        database.close();
+        //database.close();
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+
     }
 
     public synchronized void insertLocation(Location l) {
@@ -187,8 +191,8 @@ public class DbHelper extends SQLiteOpenHelper {
         private static final String
                 TABLEc_NAME = "contacts",
                 TABLEl_NAME = "locations",
-                _IDc = "id",
-                _IDl = "id",
+                _IDc = "idc",
+                _IDl = "idl",
                 COLUMN_NAME = "name",
                 COLUMN_NUMBER = "number",
                 COLUMN_LOCATION = "location",

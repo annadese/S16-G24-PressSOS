@@ -19,16 +19,18 @@ import java.util.Date;
 
 public class EmergencyContactsFragment extends Fragment {
 
+    private DbHelper helper;
     private ArrayList<Contact> data = new ArrayList<>();
     private FloatingActionButton btnaddcontact;
     private RecyclerView recyclerView;
     private AdapterContacts cAdapter;
-    private DataHelperContacts dhc = new DataHelperContacts();
+    //private DataHelperContacts dhc = new DataHelperContacts();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_emergency_contacts_main, container, false);
 
-        this.data = dhc.initializeContacts();
+        //this.data = dhc.initializeContacts();
+        helper = new DbHelper(getContext());
 
         this.btnaddcontact = (FloatingActionButton) view.findViewById(R.id.addContactFab);
         this.recyclerView = (RecyclerView) view.findViewById(R.id.contactsRecyclerView);
@@ -41,7 +43,7 @@ public class EmergencyContactsFragment extends Fragment {
             }
         });
 
-        this.cAdapter = new AdapterContacts(data);
+        this.cAdapter = new AdapterContacts(helper.getAllContactsDefault());
         this.recyclerView.setAdapter(this.cAdapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
