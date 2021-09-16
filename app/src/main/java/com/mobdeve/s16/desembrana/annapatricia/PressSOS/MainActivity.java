@@ -18,6 +18,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
+//    public static final int
+
     private BottomNavigationView bottomNav;
 
     @Override
