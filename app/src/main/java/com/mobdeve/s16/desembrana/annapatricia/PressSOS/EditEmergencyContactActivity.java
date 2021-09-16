@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class EditEmergencyContactActivity extends AppCompatActivity {
 
+    private String existingName, existingNum;
+
     private static final String TAG = "EditEmergencyContact1";
 
     private DbHelper helper;
@@ -51,6 +53,10 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                         if (res != null) {
                             if (bPin) {
 
+                                Contact oldC = new Contact(existingName, existingNum);
+                                Contact newC = new Contact(et_name.getText().toString(), et_num.getText().toString());
+
+                                helper.updateContact(oldC, newC);
 
                                 finish();
                             }
@@ -76,13 +82,13 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         this.et_num = findViewById(R.id.editEmergencyContacts_etnum);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra(CURRENT_NAME);
-        String contactNumber = intent.getStringExtra(CURRENT_NUMBER);
+        this.existingName = intent.getStringExtra(CURRENT_NAME);
+        this.existingNum = intent.getStringExtra(CURRENT_NUMBER);
         int id = intent.getIntExtra(CURRENT_ID, 0);
         //Log.d("checker", String.valueOf(id));
 
-        this.et_name.setText(name);
-        this.et_num.setText(contactNumber);
+        this.et_name.setText(existingName);
+        this.et_num.setText(existingNum);
 
         btnsave.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -100,6 +106,7 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                         // update contact in db
 
                         Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
+
                         myActivityResultLauncher.launch(i);
                     }
                 }

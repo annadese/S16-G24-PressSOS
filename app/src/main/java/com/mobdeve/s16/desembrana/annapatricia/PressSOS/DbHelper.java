@@ -184,7 +184,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     values,
                     DbReferences._IDc + " = ?",
                     new String[]{String.valueOf(cNew.getId())});
-            database.close();
+
         }
     }
 
