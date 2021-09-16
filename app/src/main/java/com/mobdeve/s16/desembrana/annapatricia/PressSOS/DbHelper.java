@@ -73,26 +73,25 @@ public class DbHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
-    /*public Contact getOne(int id) {
-        Contact contact;
+    public Contact getOneContact(String query) {
         SQLiteDatabase database = this.getReadableDatabase();
+        Contact contact;
 
-        Cursor c = null;
+        Cursor TuplePointer = database.rawQuery(
+                "SELECT * FROM " + DbReferences.TABLEc_NAME +
+                        " WHERE " + DbReferences.COLUMN_NUMBER +
+                        " = '" + query + "'",
+                null);
 
-        String query = "SELECT * FROM " + DbReferences.TABLEc_NAME +
-                " WHERE idc = '" + id + "'" ;
+        TuplePointer.moveToFirst();
+        contact = new Contact(
+                TuplePointer.getString(TuplePointer.getColumnIndexOrThrow((DbReferences.COLUMN_NAME))),
+                TuplePointer.getString(TuplePointer.getColumnIndexOrThrow((DbReferences.COLUMN_NUMBER))),
+                TuplePointer.getLong(TuplePointer.getColumnIndexOrThrow((DbReferences._IDc)))
+        );
 
-        if(database != null)
-            c = database.rawQuery(query, null);
-
-        if (c != null) {
-            while(c.moveToNext())
-                contact.
-        }
-
-        return posts;
-
-    }*/
+        return contact;
+    }
 
     public ArrayList<Location> getAllLocationsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
@@ -190,7 +189,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     // The delete contact method that takes in a contact object and uses its ID to find and delete
     // the entry.
-    public void deleteContact(Context context, int id) {
+    public void deleteContact(Context context, long id) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         String strSQL = "DELETE FROM contacts WHERE idc = " + id;

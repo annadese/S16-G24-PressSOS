@@ -122,7 +122,7 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
 
                 helper.deleteContact(getApplicationContext(), id);
 
-                //startActivity(i);
+                startActivity(i);
                 finish();
             }
         });
