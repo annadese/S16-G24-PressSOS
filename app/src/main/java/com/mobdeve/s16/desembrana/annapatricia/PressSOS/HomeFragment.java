@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment{
             public void onClick(View v) {
                 alarm();            // alarm sound is activated
                 getLocation();
-                sendTextMessage();  // SOS message is sent to all emergency contacts
+                //sendTextMessage();  // SOS message is sent to all emergency contacts
             }
         });
         return view;
