@@ -73,6 +73,27 @@ public class DbHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
+    /*public Contact getOne(int id) {
+        Contact contact;
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        Cursor c = null;
+
+        String query = "SELECT * FROM " + DbReferences.TABLEc_NAME +
+                " WHERE idc = '" + id + "'" ;
+
+        if(database != null)
+            c = database.rawQuery(query, null);
+
+        if (c != null) {
+            while(c.moveToNext())
+                contact.
+        }
+
+        return posts;
+
+    }*/
+
     public ArrayList<Location> getAllLocationsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.query(
@@ -169,13 +190,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
     // The delete contact method that takes in a contact object and uses its ID to find and delete
     // the entry.
-    public void deleteContact(Contact c) {
+    public void deleteContact(Context context, int id) {
         SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(
-                DbReferences.TABLEc_NAME,
-                DbReferences._IDc + " = ?",
-                new String[]{String.valueOf(c.getId())});
-        database.close();
+
+        String strSQL = "DELETE FROM contacts WHERE idc = " + id;
+        database.execSQL(strSQL);
     }
 
     public void deleteAllLocations(Contact c) {

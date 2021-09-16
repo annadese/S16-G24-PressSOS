@@ -17,18 +17,28 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class EditEmergencyContactActivity extends AppCompatActivity {
 
     private static final String TAG = "EditEmergencyContact1";
 
+    private DbHelper helper;
+    private ArrayList<Contact> contacts;
+    private EmergencyContactsFragment viewHolder;
+
     public static final String
         CURRENT_NAME = "CURRENT_NAME",
-        CURRENT_NUMBER = "CURRENT_NUMBER";
+        CURRENT_NUMBER = "CURRENT_NUMBER",
+        CURRENT_ID = "CURRENT_ID";
 
     private Button btnsave, btndelete, btncancel;
     private EditText et_name, et_num;
 
+
+
     private ActivityResultLauncher<Intent> myActivityResultLauncher = registerForActivityResult(
+
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -55,6 +65,10 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_contacts_edit);
 
+        helper = new DbHelper(this);
+        contacts = helper.getAllContactsDefault();
+        viewHolder = new EmergencyContactsFragment();
+
         this.btnsave = findViewById(R.id.editEmergencyContacts_btnSave);
         this.btndelete = findViewById(R.id.editEmergencyContacts_btnDelete);
         this.btncancel = findViewById(R.id.editEmergencyContacts_btnCancel);
@@ -64,6 +78,8 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra(CURRENT_NAME);
         String contactNumber = intent.getStringExtra(CURRENT_NUMBER);
+        int id = intent.getIntExtra(CURRENT_ID, 0);
+        //Log.d("checker", String.valueOf(id));
 
         this.et_name.setText(name);
         this.et_num.setText(contactNumber);
@@ -94,7 +110,10 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
-                startActivity(i);
+
+                helper.deleteContact(getApplicationContext(), id);
+
+                //startActivity(i);
                 finish();
             }
         });
