@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -65,8 +64,7 @@ public class DbHelper extends SQLiteOpenHelper {
         while(c.moveToNext()) {
             contacts.add(new Contact(
                     c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NAME)),
-                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER)),
-                    c.getLong(c.getColumnIndexOrThrow(DbReferences._IDc))
+                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_NUMBER))
             ));
         }
         c.close();
@@ -137,7 +135,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
         long result = database.insert(DbReferences.TABLEc_NAME, null, values);
 
-        database.close();
+        //database.close();
 
         if(result == -1)
             return false;
@@ -146,7 +144,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public synchronized boolean insertLocation(Location l) {
+    public synchronized void insertLocation(Location l) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
@@ -157,14 +155,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
-        long result = database.insert(DbReferences.TABLEl_NAME, null, values);
+        database.insert(DbReferences.TABLEc_NAME, null, values);
 
         database.close();
-
-        if(result == -1)
-            return false;
-        else
-            return true;
     }
 
     // Performs an UPDATE operation by comparing the old contact with the new contact. This method
@@ -173,7 +166,6 @@ public class DbHelper extends SQLiteOpenHelper {
     public void updateContact(Contact cOld, Contact cNew) {
         boolean withChanges = false;
         ContentValues values = new ContentValues();
-        Log.d("checker2: ", Long.toString(cOld.getId()));
 
         if(!cNew.getName().equals(cOld.getName())) {
             values.put(DbReferences.COLUMN_NAME, cNew.getName());
@@ -191,8 +183,8 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbReferences.TABLEc_NAME,
                     values,
                     DbReferences._IDc + " = ?",
-                    new String[]{String.valueOf(cOld.getId())});
-            database.close();
+                    new String[]{String.valueOf(cNew.getId())});
+
         }
     }
 
@@ -203,7 +195,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String strSQL = "DELETE FROM contacts WHERE idc = " + id;
         database.execSQL(strSQL);
-        database.close();
     }
 
     public void deleteAllLocations(Contact c) {
