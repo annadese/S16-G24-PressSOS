@@ -102,7 +102,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                DbReferences.COLUMN_NAME + " ASC",
+                DbReferences.COLUMN_DATE + " ASC",
                 null
         );
         ArrayList<Location> locations = new ArrayList<>();
@@ -228,7 +228,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "CREATE TABLE IF NOT EXISTS " + TABLEl_NAME + " (" +
                         _IDl + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_LAT + " TEXT, " +
-                        COLUMN_LONG + " TEXT)";
+                        COLUMN_LONG + " TEXT, " +
+                        COLUMN_DATE + " TEXT)";
 
         private static final String DROP_CONTACT_TABLE_STATEMENT =
                 "DROP TABLE IF EXISTS " + TABLEc_NAME;
