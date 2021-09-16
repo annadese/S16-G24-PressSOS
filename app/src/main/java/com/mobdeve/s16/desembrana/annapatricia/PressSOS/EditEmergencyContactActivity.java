@@ -33,8 +33,6 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    SharedPreferences sp = getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sp.edit();
 
                     if(result.getResultCode() == Activity.RESULT_OK) {
                         Intent res = result.getData();
@@ -42,9 +40,8 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
 
                         if (res != null) {
                             if (bPin) {
-                                editor.putString(Keys.NAME_KEY.name(), et_name.getText().toString());
-                                editor.putString(Keys.NAME_KEY.name(), et_num.getText().toString());
-                                editor.apply();
+
+
                                 finish();
                             }
                         }
@@ -83,6 +80,8 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                     }
                     else {
                         Log.d(TAG, "Saved");
+
+                        // update contact in db
 
                         Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
                         myActivityResultLauncher.launch(i);
