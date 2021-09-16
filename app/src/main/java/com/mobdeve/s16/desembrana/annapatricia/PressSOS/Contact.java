@@ -6,16 +6,22 @@ public class Contact {
     private String name;
     private String contactNumber;
 
-    public Contact (String name, String contactNumber, long id) {
-        this.id = id;
+    public Contact (String name, String contactNumber) {
         this.name = name;
         this.contactNumber = contactNumber;
     }
 
+    public Contact (String name, String contactNumber, long id) {
+        this.name = name;
+        this.contactNumber = contactNumber;
+        this.id = id;
+    }
 
-    public long getId() { return id; }
     public String getName() { return name; }
     public String getContactNumber() { return contactNumber; }
+    public long getId() {
+        return id;
+    }
 
     public void setName(String name) { this.name = name; }
     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }

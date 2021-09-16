@@ -13,8 +13,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class SetUpActivity extends AppCompatActivity {
 
+    private DbHelper helper;
     private static final String TAG = "SetUpActivity";
     public static final String SP_FILE_NAME = "sp";
 
@@ -28,6 +32,8 @@ public class SetUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up_account);
+
+        helper = new DbHelper(this);
 
         this.btnsave = findViewById(R.id.setup_btn);
         this.et_name = findViewById(R.id.editEmergencyContacts_etname);
@@ -90,6 +96,13 @@ public class SetUpActivity extends AppCompatActivity {
 
                                 // Add
 
+                                String name = et_ename.getText().toString().trim();
+                                String num = et_enum.getText().toString().trim();
+
+                                boolean result = helper.insertContact(new Contact(name, num));
+
+                                finishAddContact(result);
+
                                 Intent i = new Intent(SetUpActivity.this, InfoActivity.class);
                                 startActivity(i);
                                 finish();
@@ -120,4 +133,12 @@ public class SetUpActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void finishAddContact(boolean result) {
+        if(result)
+            Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Failed to Add Contact", Toast.LENGTH_SHORT).show();
+    }
+
 }

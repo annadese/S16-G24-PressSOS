@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddEmergencyContactActivity extends AppCompatActivity {
 
+    private DbHelper helper;
+
     private Button btnsave, btncancel;
     private EditText et_name, et_num;
 
@@ -18,6 +20,8 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_contacts_add);
+
+        helper = new DbHelper(this);
 
         this.btnsave = findViewById(R.id.addDmergencyContact_btnsave);
         this.btncancel = findViewById(R.id.addDmergencyContact_btncancel);
@@ -36,6 +40,14 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
                     }
                     else {
                         Intent i = new Intent(AddEmergencyContactActivity.this, EnterPinActivity.class);
+
+                        String name = et_name.getText().toString().trim();
+                        String num = et_num.getText().toString().trim();
+
+                        boolean result = helper.insertContact(new Contact(name, num));
+
+                        finishAddContact(result);
+
                         startActivity(i);
                         finish();
                     }
@@ -51,4 +63,13 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
         });
 
     }
+
+    private void finishAddContact(boolean result) {
+        if(result)
+            Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Failed to Add Contact", Toast.LENGTH_SHORT).show();
+    }
+
+
 }
