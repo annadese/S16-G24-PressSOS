@@ -51,4 +51,12 @@ public class EmergencyContactsFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        this.cAdapter = new AdapterContacts(helper.getAllContactsDefault());
+        this.recyclerView.setAdapter(this.cAdapter);
+    }
 }
