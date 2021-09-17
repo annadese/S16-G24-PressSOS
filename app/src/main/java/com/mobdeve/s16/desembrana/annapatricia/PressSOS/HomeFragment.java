@@ -78,6 +78,8 @@ public class HomeFragment extends Fragment{
 
                             //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));
                             //textView.setText(lat+ " , " + longt);
+                            helper.insertLocation(new Location("hey", "hey", "hey"));
+                            //helper.insertContact(new Contact(name, num));
                             Toast.makeText(getActivity(), lat + ", " + longt, Toast.LENGTH_SHORT).show();
                         }
                     }
