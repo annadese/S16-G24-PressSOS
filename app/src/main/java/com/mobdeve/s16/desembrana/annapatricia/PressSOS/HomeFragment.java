@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class HomeFragment extends Fragment{
@@ -31,7 +32,7 @@ public class HomeFragment extends Fragment{
     private Switch btnAlarm;
     private MediaPlayer alarmSound;
     private DbHelper helper;
-    ArrayList<Contact> contacts;
+    private ArrayList<Contact> contacts;
     private FusedLocationProviderClient fusedLocationProviderClient;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,11 +45,12 @@ public class HomeFragment extends Fragment{
         this.btnSOS = (Button)view.findViewById(R.id.main_btnsos);
         this.btnAlarm = (Switch)view.findViewById(R.id.main_btnalarm);
 
+        // when SOS button is pressed
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 alarm();            // alarm sound is activated
                 getLocation();
-        //        sendTextMessage();  // SOS message is sent to all emergency contacts
+            //    sendTextMessage();  // SOS message is sent to all emergency contacts
             }
         });
         return view;
@@ -66,8 +68,12 @@ public class HomeFragment extends Fragment{
                             Double lat = location.getLatitude();
                             Double longt = location.getLongitude();
 
-                            SimpleDateFormat dFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-                            Date date = new Date(new Date().getTime());
+                            Calendar calendar = Calendar.getInstance();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+
+                        //    date = dateFormat.format(calendar.getTime());
+                        //    dateTimeDisplay.setText(date);
                             //txt_date.setText(dFormat.format(date));
 
                             //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));

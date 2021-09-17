@@ -1,20 +1,57 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddEmergencyContactActivity extends AppCompatActivity {
+
+    private static final String TAG = "AddEmergencyContact1";
 
     private DbHelper helper;
 
     private Button btnsave, btncancel;
     private EditText et_name, et_num;
+
+    private ActivityResultLauncher<Intent> myActivityResultLauncherAdd = registerForActivityResult(
+
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    if(result.getResultCode() == Activity.RESULT_OK) {
+                        Intent res = result.getData();
+                        Boolean bPin = res.getBooleanExtra("pin_result", false);
+
+                        if (res != null) {
+                            if (bPin) {
+                                Contact newC = new Contact(et_name.getText().toString(), et_num.getText().toString());
+
+                                String name = et_name.getText().toString().trim();
+                                String num = et_num.getText().toString().trim();
+
+                                helper.insertContact(new Contact(name, num));
+
+                                finish();
+                            }
+                        }
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Log.d(TAG, "Cancelled");
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +78,7 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
                     else {
                         Intent i = new Intent(AddEmergencyContactActivity.this, EnterPinActivity.class);
 
-                        String name = et_name.getText().toString().trim();
-                        String num = et_num.getText().toString().trim();
-
-                        boolean result = helper.insertContact(new Contact(name, num));
-
-                        finishAddContact(result);
-
-                        startActivity(i);
-                        finish();
+                        myActivityResultLauncherAdd.launch(i);
                     }
                 }
             }
@@ -62,12 +91,5 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void finishAddContact(boolean result) {
-        if(result)
-            Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Failed to Add Contact", Toast.LENGTH_SHORT).show();
     }
 }

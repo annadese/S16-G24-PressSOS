@@ -96,14 +96,13 @@ public class SetUpActivity extends AppCompatActivity {
 
                                 editor.apply();
 
-                                // Add
+
 
                                 String name = et_ename.getText().toString().trim();
                                 String num = et_enum.getText().toString().trim();
 
+                                // insert contact to DB
                                 boolean result = helper.insertContact(new Contact(name, num));
-
-                                finishAddContact(result);
 
                                 Intent i = new Intent(SetUpActivity.this, InfoActivity.class);
                                 startActivity(i);
@@ -135,12 +134,4 @@ public class SetUpActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void finishAddContact(boolean result) {
-        if(result)
-            Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Failed to Add Contact", Toast.LENGTH_SHORT).show();
-    }
-
 }
