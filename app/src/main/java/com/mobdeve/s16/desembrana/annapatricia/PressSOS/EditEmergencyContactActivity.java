@@ -37,8 +37,6 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
     private Button btnsave, btndelete, btncancel;
     private EditText et_name, et_num;
 
-
-
     private ActivityResultLauncher<Intent> myActivityResultLauncherEdit = registerForActivityResult(
 
             new ActivityResultContracts.StartActivityForResult(),
@@ -52,11 +50,8 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
 
                         if (res != null) {
                             if (bPin) {
+
                                 Contact newC = new Contact(et_name.getText().toString(), et_num.getText().toString());
-
-                                Log.d("checker", newC.getName());
-                                Log.d("checker", newC.getContactNumber());
-
                                 Contact oldC = helper.getOneContact(existingNum);
 
                                 helper.updateContact(oldC, newC);
@@ -141,9 +136,13 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
         btndelete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
 
-                myActivityResultLauncherDelete.launch(i);
+                if (contacts.size() == 1) {
+                    Toast.makeText(EditEmergencyContactActivity.this, "Must have at least 1 contact", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
+                    myActivityResultLauncherDelete.launch(i);
+                }
             }
         });
 

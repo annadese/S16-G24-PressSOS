@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +31,6 @@ public class EmergencyContactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_emergency_contacts_main, container, false);
 
-        //this.data = dhc.initializeContacts();
         helper = new DbHelper(getContext());
 
         this.btnaddcontact = (FloatingActionButton) view.findViewById(R.id.addContactFab);
@@ -39,8 +39,14 @@ public class EmergencyContactsFragment extends Fragment {
         btnaddcontact.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
-                EmergencyContactsFragment.this.startActivity(intent);
+                data = helper.getAllContactsDefault();
+
+                if (data.size() >= 5) {
+                    Toast.makeText(getActivity(), "Can only add up to 5 contacts", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), AddEmergencyContactActivity.class);
+                    EmergencyContactsFragment.this.startActivity(intent);
+                }
             }
         });
 
