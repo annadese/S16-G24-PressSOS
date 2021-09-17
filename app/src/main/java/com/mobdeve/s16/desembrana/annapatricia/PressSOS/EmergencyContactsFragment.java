@@ -45,7 +45,6 @@ public class EmergencyContactsFragment extends Fragment {
         });
 
         this.cAdapter = new AdapterContacts(helper.getAllContactsDefault());
-    //    Log.d("checker1", Integer.toString(helper.getAllContactsDefault().get(1).getId()));
         this.recyclerView.setAdapter(this.cAdapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
