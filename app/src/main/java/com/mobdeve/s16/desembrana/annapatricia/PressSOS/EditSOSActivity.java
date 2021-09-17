@@ -39,7 +39,7 @@ public class EditSOSActivity extends AppCompatActivity {
 
                         if (res != null) {
                             if (bPin) {
-                                editor.putString(Keys.NAME_KEY.name(), et_sos.getText().toString());
+                                editor.putString(Keys.SOS_MESSAGE_KEY.name(), et_sos.getText().toString());
                                 editor.apply();
                                 finish();
                             }
