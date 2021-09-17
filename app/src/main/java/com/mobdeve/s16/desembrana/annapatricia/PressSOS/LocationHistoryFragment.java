@@ -38,4 +38,12 @@ public class LocationHistoryFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        this.lAdapter = new AdapterLocation(helper.getAllLocationsDefault());
+        this.recyclerView.setAdapter(this.lAdapter);
+    }
 }

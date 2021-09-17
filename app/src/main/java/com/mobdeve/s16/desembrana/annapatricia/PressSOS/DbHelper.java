@@ -19,8 +19,6 @@ import java.util.concurrent.Executors;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static DbHelper instance = null;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Date date;
 
     public DbHelper(Context context) {
         super(context, DbReferences.DATABASE_NAME, null, DbReferences.DATABASE_VERSION);
@@ -102,7 +100,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                DbReferences.COLUMN_DATE + " ASC",
+                DbReferences.COLUMN_DATE + " DESC",
                 null
         );
         ArrayList<Llocation> locations = new ArrayList<>();

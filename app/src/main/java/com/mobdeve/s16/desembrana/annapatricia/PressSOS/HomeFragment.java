@@ -70,22 +70,11 @@ public class HomeFragment extends Fragment{
                             String longt = location.getLongitude() + "";
 
                             Calendar calendar = Calendar.getInstance();
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                            SimpleDateFormat dFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
                             Date date = new Date(new Date().getTime());
+                            String d = dFormat.format(date);
 
-
-                        //    date = dateFormat.format(calendar.getTime());
-                        //    dateTimeDisplay.setText(date);
-                            //txt_date.setText(dFormat.format(date));
-
-                            //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));
-                            //textView.setText(lat+ " , " + longt);
-                            //Llocation l = new Llocation("hey1", "hey2", "hey3");
-
-
-                            helper.insertLocation(new Llocation(lat, longt, date.toString()));
-                            //helper.insertContact(new Contact(name, num));
-                            Toast.makeText(getActivity(), lat + ", " + longt, Toast.LENGTH_SHORT).show();
+                            helper.insertLocation(new Llocation(lat, longt, d));
                         }
                     }
                 });

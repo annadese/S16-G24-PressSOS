@@ -20,8 +20,8 @@ public class ViewHolderLocation extends RecyclerView.ViewHolder {
         this.tvTime = itemView.findViewById(R.id.viewholder_tvTime);
     }
 
-    public void setTvLocation(String location) {
-        this.tvLocation.setText(location);
+    public void setTvLocation(Llocation location) {
+        this.tvLocation.setText(location.getLatitude() + ", " + location.getLongitude());
     }
 
     public void setTvTime(String time) {
