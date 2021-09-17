@@ -114,7 +114,7 @@ public class DbHelper extends SQLiteOpenHelper {
             }
             locations.add(new Location(
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)), c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LONG)),
-                date
+                date.toString() // clar edited this from date to date.toString()
             ));
         }
         c.close();

@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class Location {
 
-    private String lat, longt;
-    private Date dDate;
+    private String lat, longt, dDate;
 
-    public Location (String lat, String longt, Date dDate) {
+    public Location (String lat, String longt, String dDate) {
         this.lat = lat;
         this.longt = longt;
         this.dDate = dDate;
@@ -15,9 +14,9 @@ public class Location {
 
     public String getLatitude() { return lat; }
     public String getLongitude() { return longt; }
-    public Date getDate() { return dDate; }
+    public String getDate() { return dDate; }
 
     public void setLatitude(String lat) {this.lat = lat; }
     public void setLongitude(String longt) {this.longt = longt; }
-    public void setDate(Date dDate) {this.dDate = dDate; }
+    public void setDate(String dDate) {this.dDate = dDate; }
 }
