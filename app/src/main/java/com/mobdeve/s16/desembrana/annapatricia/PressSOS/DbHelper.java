@@ -183,7 +183,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     DbReferences.TABLEc_NAME,
                     values,
                     DbReferences._IDc + " = ?",
-                    new String[]{String.valueOf(cNew.getId())});
+                    new String[]{String.valueOf(cOld.getId())});
 
         }
     }
