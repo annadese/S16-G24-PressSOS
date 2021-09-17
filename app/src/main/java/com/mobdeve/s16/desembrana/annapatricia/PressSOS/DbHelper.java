@@ -197,9 +197,9 @@ public class DbHelper extends SQLiteOpenHelper {
         database.execSQL(strSQL);
     }
 
-    public void deleteAllLocations(Contact c) {
+    public void deleteAllLocations() {
         SQLiteDatabase database = this.getWritableDatabase();
-        database.execSQL("delete from "+ DbReferences.TABLEl_NAME);
+        database.execSQL("delete from "+ DbReferences.TABLEc_NAME);
         database.close();
     }
 

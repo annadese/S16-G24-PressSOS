@@ -16,12 +16,16 @@ import android.widget.Toast;
 
 public class AccountFragment extends Fragment {
 
+    private DbHelper helper;
+
     private Button btneditname, btneditnum, btneditsos, btnclear;
     private TextView tvname, tvnum, tvsos;
     private String name, contactnum;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+
+        helper = new DbHelper(getContext());
 
         this.btneditname = (Button) view.findViewById(R.id.mainset_btnname);
         this.btneditnum = (Button) view.findViewById(R.id.mainset_btnnum);
@@ -59,6 +63,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v){
                 Toast.makeText(getActivity(), "Cleared Location History", Toast.LENGTH_LONG).show();
+                helper.deleteAllLocations();
             }
         });
 
