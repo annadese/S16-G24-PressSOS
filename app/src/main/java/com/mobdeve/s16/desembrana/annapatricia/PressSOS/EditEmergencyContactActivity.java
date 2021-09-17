@@ -39,7 +39,7 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
 
 
 
-    private ActivityResultLauncher<Intent> myActivityResultLauncher = registerForActivityResult(
+    private ActivityResultLauncher<Intent> myActivityResultLauncherEdit = registerForActivityResult(
 
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -60,6 +60,31 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                                 Contact oldC = helper.getOneContact(existingNum);
 
                                 helper.updateContact(oldC, newC);
+
+                                finish();
+                            }
+                        }
+                    } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Log.d(TAG, "Cancelled");
+                    }
+                }
+            });
+
+    private ActivityResultLauncher<Intent> myActivityResultLauncherDelete = registerForActivityResult(
+
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+
+                    if(result.getResultCode() == Activity.RESULT_OK) {
+                        Intent res = result.getData();
+                        Boolean bPin = res.getBooleanExtra("pin_result", false);
+
+                        if (res != null) {
+                            if (bPin) {
+                                Contact temp_c = helper.getOneContact(existingNum);
+                                helper.deleteContact(getApplicationContext(), temp_c.getId());
 
                                 finish();
                             }
@@ -105,11 +130,9 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                     else {
                         Log.d(TAG, "Saved");
 
-                        // update contact in db
-
                         Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
 
-                        myActivityResultLauncher.launch(i);
+                        myActivityResultLauncherEdit.launch(i);
                     }
                 }
             }
@@ -120,10 +143,7 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
             public void onClick(View v){
                 Intent i = new Intent(EditEmergencyContactActivity.this, EnterPinActivity.class);
 
-                helper.deleteContact(getApplicationContext(), id);
-
-                startActivity(i);
-                finish();
+                myActivityResultLauncherDelete.launch(i);
             }
         });
 
