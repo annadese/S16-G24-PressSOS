@@ -66,11 +66,12 @@ public class HomeFragment extends Fragment{
                     @Override
                     public void onSuccess(Location location) {
                         if(location != null){
-                            Double lat = location.getLatitude();
-                            Double longt = location.getLongitude();
+                            String lat = location.getLatitude() + "";
+                            String longt = location.getLongitude() + "";
 
                             Calendar calendar = Calendar.getInstance();
                             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                            Date date = new Date(new Date().getTime());
 
 
                         //    date = dateFormat.format(calendar.getTime());
@@ -79,10 +80,10 @@ public class HomeFragment extends Fragment{
 
                             //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));
                             //textView.setText(lat+ " , " + longt);
-                            Llocation l = new Llocation("hey1", "hey2", "hey3");
+                            //Llocation l = new Llocation("hey1", "hey2", "hey3");
 
 
-                            helper.insertLocation(new Llocation("hey", "hey", "hey"));
+                            helper.insertLocation(new Llocation(lat, longt, date.toString()));
                             //helper.insertContact(new Contact(name, num));
                             Toast.makeText(getActivity(), lat + ", " + longt, Toast.LENGTH_SHORT).show();
                         }
