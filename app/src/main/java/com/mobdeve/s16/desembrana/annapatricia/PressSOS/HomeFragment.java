@@ -75,6 +75,8 @@ public class HomeFragment extends Fragment{
                             String d = dFormat.format(date);
 
                             helper.insertLocation(new Llocation(lat, longt, d));
+
+                            sendTextMessage(lat, longt);
                         }
                     }
                 });
@@ -97,12 +99,12 @@ public class HomeFragment extends Fragment{
     }
 
     // method for sending SOS message to all emergency contacts
-    protected void sendTextMessage() {
+    protected void sendTextMessage(String lat, String longt) {
         SmsManager smsManager = SmsManager.getDefault();
         SharedPreferences sp = this.getContext().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
         contacts = helper.getAllContactsDefault();
 
-        String sos = sp.getString(Keys.SOS_MESSAGE_KEY.name(), "SOS Message");
+        String sos = sp.getString(Keys.SOS_MESSAGE_KEY.name(), "SOS Message") + " " + "https://www.google.com/search?q="+ lat + "%2C+" + longt + "&oq=" + lat + "%2C+" + longt + "&aqs=chrome..69i57.2380j0j9&sourceid=chrome&ie=UTF-8";
 
         // send text to all emergency contacts
         for (int i = 0; i < 5; i++) {
