@@ -19,5 +19,5 @@ public class Location {
 
     public void setLatitude(String lat) {this.lat = lat; }
     public void setLongitude(String longt) {this.longt = longt; }
-    public void setLatitude(Date dDate) {this.dDate = dDate; }
+    public void setDate(Date dDate) {this.dDate = dDate; }
 }
