@@ -8,6 +8,7 @@ import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,7 +79,10 @@ public class HomeFragment extends Fragment{
 
                             //boolean result = helper.insertLocation(new Location(lat.toString(), longt.toString(), date));
                             //textView.setText(lat+ " , " + longt);
-                            helper.insertLocation(new Location("hey", "hey", "hey"));
+                            Llocation l = new Llocation("hey1", "hey2", "hey3");
+
+
+                            helper.insertLocation(new Llocation("hey", "hey", "hey"));
                             //helper.insertContact(new Contact(name, num));
                             Toast.makeText(getActivity(), lat + ", " + longt, Toast.LENGTH_SHORT).show();
                         }

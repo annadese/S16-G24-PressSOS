@@ -2,6 +2,7 @@ package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class LocationHistoryFragment extends Fragment {
 
     private DbHelper helper;
-    private ArrayList<Location> data = new ArrayList<>();
+    private ArrayList<Llocation> data = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterLocation lAdapter;
     //private DataHelperLocations dhl = new DataHelperLocations();
@@ -29,8 +30,9 @@ public class LocationHistoryFragment extends Fragment {
         this.recyclerView = (RecyclerView) view.findViewById(R.id.location_recyclerView);
 
         helper = new DbHelper(getContext());
+        data = helper.getAllLocationsDefault();
 
-        this.lAdapter = new AdapterLocation(helper.getAllLocationsDefault());
+        this.lAdapter = new AdapterLocation(data);
         this.recyclerView.setAdapter(this.lAdapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 

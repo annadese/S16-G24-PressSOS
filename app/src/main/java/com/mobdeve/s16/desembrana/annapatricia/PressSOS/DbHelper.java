@@ -93,7 +93,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return contact;
     }
 
-    public ArrayList<Location> getAllLocationsDefault() {
+    public ArrayList<Llocation> getAllLocationsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.query(
                 DbReferences.TABLEl_NAME,
@@ -105,17 +105,25 @@ public class DbHelper extends SQLiteOpenHelper {
                 DbReferences.COLUMN_DATE + " ASC",
                 null
         );
-        ArrayList<Location> locations = new ArrayList<>();
+        ArrayList<Llocation> locations = new ArrayList<>();
         while(c.moveToNext()) {
-            try {
+            /* try {
                 date = dateFormat.parse(c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_DATE)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            locations.add(new Location(
+            locations.add(new Llocation(
                 c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)), c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LONG)),
                 date.toString() // clar edited this from date to date.toString()
             ));
+
+             */
+
+            Llocation l = new Llocation(c.getString(
+                    c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)),
+                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LONG)),
+                    c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_DATE)));
+            locations.add(l);
         }
         c.close();
         database.close();
@@ -135,7 +143,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
         long result = database.insert(DbReferences.TABLEc_NAME, null, values);
 
-        //database.close();
+        database.close();
 
         if(result == -1)
             return false;
@@ -143,18 +151,18 @@ public class DbHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public synchronized void insertLocation(Location l) {
+    public synchronized void insertLocation(Llocation l) {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(DbReferences.COLUMN_LAT, l.getLatitude());
         values.put(DbReferences.COLUMN_LONG, l.getLongitude());
-        values.put(DbReferences.COLUMN_DATE, dateFormat.format(l.getDate()));
+        values.put(DbReferences.COLUMN_DATE, l.getDate());
 
         // Insert the new row
         // Inserting returns the primary key value of the new row, but we can ignore that if we don’t need it
-        database.insert(DbReferences.TABLEc_NAME, null, values);
+        database.insert(DbReferences.TABLEl_NAME, null, values);
 
         database.close();
     }
@@ -198,7 +206,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void deleteAllLocations() {
         SQLiteDatabase database = this.getWritableDatabase();
-        database.delete(DbReferences.TABLEc_NAME, null, null);
+        database.delete(DbReferences.TABLEl_NAME, null, null);
         database.close();
     }
 

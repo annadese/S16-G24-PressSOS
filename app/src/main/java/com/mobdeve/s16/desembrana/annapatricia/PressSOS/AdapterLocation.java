@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class AdapterLocation extends RecyclerView.Adapter<ViewHolderLocation> {
 
-    private ArrayList<Location> locations;
+    private ArrayList<Llocation> locations;
 
-    public AdapterLocation(ArrayList<Location> locations){
+    public AdapterLocation(ArrayList<Llocation> locations){
         this.locations = locations;
     }
 

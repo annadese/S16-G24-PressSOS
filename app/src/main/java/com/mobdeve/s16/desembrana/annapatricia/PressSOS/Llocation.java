@@ -1,12 +1,10 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
-import java.util.Date;
-
-public class Location {
+public class Llocation {
 
     private String lat, longt, dDate;
 
-    public Location (String lat, String longt, String dDate) {
+    public Llocation (String lat, String longt, String dDate) {
         this.lat = lat;
         this.longt = longt;
         this.dDate = dDate;
