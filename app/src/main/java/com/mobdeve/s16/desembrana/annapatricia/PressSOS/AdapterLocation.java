@@ -1,6 +1,7 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,16 @@ public class AdapterLocation extends RecyclerView.Adapter<ViewHolderLocation> {
         viewHolderLocation.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(parent.getContext(), LocationActivity.class);
-                parent.getContext().startActivity(intent);
+
+                String link = "https://www.google.com/maps/dir/?api=1&destination=" +
+                        locations.get(viewHolderLocation.getAdapterPosition()).getLatitude() + "," +
+                        locations.get(viewHolderLocation.getAdapterPosition()).getLongitude();
+
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse(link));
+
+                parent.getContext().startActivity(viewIntent);
             }
         });
 

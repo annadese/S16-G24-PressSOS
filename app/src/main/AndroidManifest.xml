@@ -29,7 +29,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".AddEmergencyContactActivity" />
         <activity android:name=".EditEmergencyContactActivity" />
-        <activity android:name=".LocationActivity" />
         <activity android:name=".EnterPinActivity" />
     </application>
 

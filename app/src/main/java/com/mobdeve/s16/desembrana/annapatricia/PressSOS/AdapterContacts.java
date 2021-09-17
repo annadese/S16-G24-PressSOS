@@ -38,8 +38,6 @@ public class AdapterContacts extends RecyclerView.Adapter<ViewHolderContacts> {
                 intent.putExtra("CURRENT_NAME", contacts.get(viewHolderContacts.getAdapterPosition()).getName());
                 intent.putExtra("CURRENT_NUMBER", contacts.get(viewHolderContacts.getAdapterPosition()).getContactNumber());
                 intent.putExtra("CURRENT_ID", contacts.get(viewHolderContacts.getAdapterPosition()).getId());
-            //    Log.d("checker", Math.toIntExact(contacts.get(viewHolderContacts.getAdapterPosition()).getId()).);
-                //intent.putExtra("CURRENT_ID", contacts.get(viewHolderContacts.getAdapterPosition()).getId());
 
                 parent.getContext().startActivity(intent);
             }

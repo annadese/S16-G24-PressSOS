@@ -12,7 +12,7 @@ public class Account {
         this.pin = pin;
 
         // default SOS message
-        this.sosText = "This is an EMERGENCY! Your friend, " + this.name + ", needs help! Click the link to see his/her current location: ";
+        this.sosText = this.name + " is in danger! This is their location: ";
     }
 
     public String getName(){ return name; }
