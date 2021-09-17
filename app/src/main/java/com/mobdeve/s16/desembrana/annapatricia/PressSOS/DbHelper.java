@@ -141,7 +141,6 @@ public class DbHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-
     }
 
     public synchronized void insertLocation(Location l) {
@@ -199,7 +198,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void deleteAllLocations() {
         SQLiteDatabase database = this.getWritableDatabase();
-        database.execSQL("delete from "+ DbReferences.TABLEc_NAME);
+        database.delete(DbReferences.TABLEc_NAME, null, null);
         database.close();
     }
 
