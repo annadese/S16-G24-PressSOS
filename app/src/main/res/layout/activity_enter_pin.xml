@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="54dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="numberPassword"
         android:maxLength="6"
         app:layout_constraintEnd_toEndOf="parent"
