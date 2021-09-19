@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment{
     Handler handler = new Handler();
     Runnable myRunnable = new Runnable() {
         public void run() {
+
             locationService.sendSOS();
         }
     };
@@ -134,13 +135,5 @@ public class HomeFragment extends Fragment{
         super.onPause();
 
         this.isPressed = isPressed;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        getActivity().stopService(locationIntent);
-        getActivity().unbindService(lConnection);
     }
 }
