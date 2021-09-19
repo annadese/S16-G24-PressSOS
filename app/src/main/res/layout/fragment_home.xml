@@ -32,7 +32,7 @@
             android:textSize="70sp"
             android:textStyle="bold"
             app:cornerRadius="140dp"
-            app:strokeColor="#FFFF"
+            app:strokeColor="@color/light_red"
             app:strokeWidth="30dp" />
 
     </LinearLayout>
