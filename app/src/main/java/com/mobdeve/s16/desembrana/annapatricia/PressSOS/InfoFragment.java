@@ -9,6 +9,10 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+/**
+ * This class displays the instruction fragment on how to use the app.
+ */
+
 public class InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_how_to_one, container, false);

@@ -22,7 +22,6 @@ public class LocationHistoryFragment extends Fragment {
     private ArrayList<Llocation> data = new ArrayList<>();
     private RecyclerView recyclerView;
     private AdapterLocation lAdapter;
-    //private DataHelperLocations dhl = new DataHelperLocations();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location_history, container, false);

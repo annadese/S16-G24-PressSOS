@@ -96,8 +96,6 @@ public class SetUpActivity extends AppCompatActivity {
 
                                 editor.apply();
 
-
-
                                 String name = et_ename.getText().toString().trim();
                                 String num = et_enum.getText().toString().trim();
 
@@ -111,26 +109,6 @@ public class SetUpActivity extends AppCompatActivity {
                         }
                     }
                 }
-                /*if(et_name.getText().toString().isEmpty() || et_num.getText().toString().isEmpty() || et_pin1.getText().toString().isEmpty() || et_pin2.getText().toString().isEmpty() || et_ename.getText().toString().isEmpty() || et_enum.getText().toString().isEmpty()){
-                    Toast.makeText(SetUpActivity.this, "Please fill up all fields", Toast.LENGTH_LONG).show();
-                }
-
-                else{
-                    name = et_name.getText().toString();
-                    num = et_num.getText().toString();
-                    pin1 = Integer.parseInt(et_pin1.getText().toString());
-                    pin2 = Integer.parseInt(et_pin2.getText().toString());
-
-                    if(pin1 == pin2){
-                        account = new Account(name, num, pin1);
-                        Intent i = new Intent(SetUpActivity.this, MainActivity.class);
-                        startActivity(i);
-                    }
-
-                    else {
-                        Toast.makeText(SetUpActivity.this, "PIN does not match", Toast.LENGTH_LONG).show();
-                    }
-                }*/
             }
         });
     }

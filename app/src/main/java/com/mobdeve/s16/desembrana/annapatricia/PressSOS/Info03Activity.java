@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This class displays the third page instruction on how to use the app.
+ */
 public class Info03Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

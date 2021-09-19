@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         this.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
 
+            /**
+             * Used to switch between different fragments
+             */
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
 
@@ -94,7 +97,9 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    // request permission for sending SMS messages
+    /**
+     * request permission for sending SMS messages and location access
+      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

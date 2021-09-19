@@ -26,11 +26,13 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="SOS"
-            android:textColor="#FFFFFF"
+            android:textColor="#FFFF"
+            android:textColorHighlight="#B3A5A5"
+            android:textColorLink="#7E6E6E"
             android:textSize="70sp"
             android:textStyle="bold"
             app:cornerRadius="140dp"
-            app:strokeColor="@color/light_red"
+            app:strokeColor="#FFFF"
             app:strokeWidth="30dp" />
 
     </LinearLayout>
