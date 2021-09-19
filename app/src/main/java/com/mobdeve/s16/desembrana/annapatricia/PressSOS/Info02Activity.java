@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This class displays the second page instruction on how to use the app.
+ */
 public class Info02Activity extends AppCompatActivity {
 
     @Override

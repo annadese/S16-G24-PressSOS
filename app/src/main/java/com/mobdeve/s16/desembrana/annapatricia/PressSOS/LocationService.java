@@ -36,7 +36,6 @@ public class LocationService extends Service {
 
     private final String TAG = "LocationService1";
 
-    private int currLocationPosition = -1;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private MediaPlayer alarmSound;
 
@@ -55,7 +54,9 @@ public class LocationService extends Service {
         return Service.START_STICKY;
     }
 
-    // gets the current location of the user and sends SOS messages to contacts
+    /**
+     * gets the current location of the user and sends SOS messages to contacts
+     */
     public void sendSOS() {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -88,6 +89,11 @@ public class LocationService extends Service {
         }
     }
 
+    /**
+     * method for sending text messages
+     * @param lat - latitude coordinates of the user
+     * @param longt - longitude coordinates of the user
+     */
     public void sendTextMessages (String lat, String longt) {
         SmsManager smsManager = SmsManager.getDefault();
         SharedPreferences sp = this.getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
@@ -110,19 +116,25 @@ public class LocationService extends Service {
         this.contacts = contacts;
     }
 
-    // method for turning on alarm sound
+    /**
+     * method for turning on alarm sound
+      */
     public void alarmOn(){
         alarmSound.setLooping(true);
         alarmSound.start();
     }
 
-    // method for turning off alarm sound
+    /**
+     * method for turning off alarm sound
+     */
     public void alarmOff(){
         alarmSound.pause();
         alarmSound.seekTo(0);
     }
 
-    // -----Start of Service Binding Components-----
+    /**
+     * The following methods are for Service Binding Components
+     */
     private final IBinder binder = new LocalBinder();
 
     @Override
@@ -135,5 +147,5 @@ public class LocationService extends Service {
             return LocationService.this;
         }
     }
-    // -----End of Service Binding Components-----
+
 }
