@@ -24,6 +24,9 @@ public class AddEmergencyContactActivity extends AppCompatActivity {
     private Button btnsave, btncancel;
     private EditText et_name, et_num;
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncherAdd = registerForActivityResult(
 
             new ActivityResultContracts.StartActivityForResult(),
