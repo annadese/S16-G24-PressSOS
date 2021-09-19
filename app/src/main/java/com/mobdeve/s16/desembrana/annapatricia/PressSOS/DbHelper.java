@@ -37,6 +37,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return instance;
     }
 
+    // Gets all contacts from the database
     public ArrayList<Contact> getAllContactsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.query(
@@ -62,6 +63,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
+    // Gets one contact from the data base and selects it through the contact number
     public Contact getOneContact(String query) {
         SQLiteDatabase database = this.getReadableDatabase();
         Contact contact;
@@ -82,6 +84,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return contact;
     }
 
+    // Gets all locations from the database
     public ArrayList<Llocation> getAllLocationsDefault() {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor c = database.query(
@@ -96,17 +99,6 @@ public class DbHelper extends SQLiteOpenHelper {
         );
         ArrayList<Llocation> locations = new ArrayList<>();
         while(c.moveToNext()) {
-            /* try {
-                date = dateFormat.parse(c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_DATE)));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            locations.add(new Llocation(
-                c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)), c.getString(c.getColumnIndexOrThrow(DbReferences.COLUMN_LONG)),
-                date.toString() // clar edited this from date to date.toString()
-            ));
-
-             */
 
             Llocation l = new Llocation(c.getString(
                     c.getColumnIndexOrThrow(DbReferences.COLUMN_LAT)),
@@ -120,6 +112,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return locations;
     }
 
+    //Inserts a contact in the data base. A contact opject is passed to the method
     public synchronized boolean insertContact(Contact c) {
         SQLiteDatabase database = this.getWritableDatabase();
 
@@ -140,6 +133,7 @@ public class DbHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    // Inserts a location in the data base. A location object is passed as a parameter to the method
     public synchronized void insertLocation(Llocation l) {
         SQLiteDatabase database = this.getWritableDatabase();
 
@@ -193,6 +187,7 @@ public class DbHelper extends SQLiteOpenHelper {
         database.execSQL(strSQL);
     }
 
+    // This method deletes all of the rows from the location table
     public void deleteAllLocations() {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(DbReferences.TABLEl_NAME, null, null);
