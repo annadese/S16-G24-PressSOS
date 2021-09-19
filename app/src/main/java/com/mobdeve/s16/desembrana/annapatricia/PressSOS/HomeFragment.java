@@ -43,7 +43,6 @@ import static androidx.core.content.ContextCompat.getSystemService;
 public class HomeFragment extends Fragment{
     private static final String TAG = "HomeFragment1";
     private static final int INTERVAL = 5000;    // 5 minutes
-    private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
 
     private Button btnSOS;
     private Switch btnAlarm;
