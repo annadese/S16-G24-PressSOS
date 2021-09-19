@@ -47,10 +47,9 @@ public class HomeFragment extends Fragment{
 
     private Button btnSOS;
     private Switch btnAlarm;
-    private MediaPlayer alarmSound;
+
     private DbHelper helper;
     private ArrayList<Contact> contacts;
-    //private FusedLocationProviderClient fusedLocationProviderClient;
 
     // Components related to the service
     private boolean bound;
@@ -70,6 +69,8 @@ public class HomeFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         helper = new DbHelper(getContext());
 
+        contacts = helper.getAllContactsDefault();
+
         this.btnSOS = (Button)view.findViewById(R.id.main_btnsos);
         this.btnAlarm = (Switch)view.findViewById(R.id.main_btnalarm);
 
@@ -79,17 +80,22 @@ public class HomeFragment extends Fragment{
         // when SOS button is pressed
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                // when button is pressed
                 if (isPressed == 0) {
                     isPressed = 1;
-                    locationService.alarmOn();
                     locationService.sendSOS();
-                    handler.postDelayed(myRunnable, INTERVAL); //Every 120000 ms (2 minutes)
+                    handler.postDelayed(myRunnable, INTERVAL);
 
+                    if (btnAlarm.isChecked()) {
+                        locationService.alarmOn();
+                    }
+
+                // when button is pressed again
                 } else {
                     isPressed = 0;
                     locationService.alarmOff();
                     handler.removeCallbacks(myRunnable);
-                //    getActivity().unbindService(lConnection);
                     getActivity().stopService(locationIntent);
 
                 }
@@ -100,7 +106,6 @@ public class HomeFragment extends Fragment{
             getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
             getActivity().startService(locationIntent);
         }
-
         return view;
     }
 
