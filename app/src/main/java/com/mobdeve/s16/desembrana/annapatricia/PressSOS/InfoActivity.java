@@ -17,7 +17,7 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_how_to_two);
+        setContentView(R.layout.activity_how_to_one);
 
         Button next2 = findViewById(R.id.howto_next2);
         next2.setOnClickListener(new View.OnClickListener() {
