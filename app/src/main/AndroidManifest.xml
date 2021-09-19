@@ -30,6 +30,8 @@
         <activity android:name=".AddEmergencyContactActivity" />
         <activity android:name=".EditEmergencyContactActivity" />
         <activity android:name=".EnterPinActivity" />
+        <service android:name="com.mobdeve.s16.desembrana.annapatricia.PressSOS.LocationService"></service>
+
     </application>
 
 </manifest>

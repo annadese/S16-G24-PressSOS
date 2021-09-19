@@ -1,15 +1,22 @@
 package com.mobdeve.s16.desembrana.annapatricia.PressSOS;
 
 import android.Manifest;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +24,9 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -28,91 +38,112 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 public class HomeFragment extends Fragment{
+    private static final String TAG = "HomeFragment1";
+    private static final int INTERVAL = 5000;    // 5 minutes
+    private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+
     private Button btnSOS;
     private Switch btnAlarm;
     private MediaPlayer alarmSound;
     private DbHelper helper;
     private ArrayList<Contact> contacts;
-    private FusedLocationProviderClient fusedLocationProviderClient;
+    //private FusedLocationProviderClient fusedLocationProviderClient;
+
+    // Components related to the service
+    private boolean bound;
+    private LocationService locationService;
+    private Intent locationIntent;
+
+    private int isPressed = 0;
+
+    Handler handler = new Handler();
+    Runnable myRunnable = new Runnable() {
+        public void run() {
+            locationService.sendSOS();
+        }
+    };
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         helper = new DbHelper(getContext());
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        this.alarmSound = MediaPlayer.create(getActivity(), R.raw.alarm);
         this.btnSOS = (Button)view.findViewById(R.id.main_btnsos);
         this.btnAlarm = (Switch)view.findViewById(R.id.main_btnalarm);
+
+        // Saves a copy of the intent (for when we want to start or cancel the service again)
+        this.locationIntent = new Intent(getActivity(), LocationService.class);
 
         // when SOS button is pressed
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                alarm();            // alarm sound is activated
-                getLocation();
-            //    sendTextMessage();  // SOS message is sent to all emergency contacts
+                if (isPressed == 0) {
+                    isPressed = 1;
+                    locationService.alarmOn();
+                    locationService.sendSOS();
+                    handler.postDelayed(myRunnable, INTERVAL); //Every 120000 ms (2 minutes)
+
+                } else {
+                    isPressed = 0;
+                    locationService.alarmOff();
+                    handler.removeCallbacks(myRunnable);
+                //    getActivity().unbindService(lConnection);
+                    getActivity().stopService(locationIntent);
+
+                }
             }
         });
+
+        if(!bound) {
+            getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
+            getActivity().startService(locationIntent);
+        }
+
         return view;
     }
 
-    private void getLocation() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            if(getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED){
-                //get location
-                fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if(location != null){
-                            String lat = location.getLatitude() + "";
-                            String longt = location.getLongitude() + "";
+    @Override
+    public void onStart() {
+        super.onStart();
 
-                            Calendar calendar = Calendar.getInstance();
-                            SimpleDateFormat dFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-                            Date date = new Date(new Date().getTime());
-                            String d = dFormat.format(date);
-
-                            helper.insertLocation(new Llocation(lat, longt, d));
-
-                            sendTextMessage(lat, longt);
-                        }
-                    }
-                });
-            } else{
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
+        // Check if a service is bound. This will always be true given our current setup, but it
+        // would be useful if this were to be modified to handle playing songs outside of the app.
+        if(!bound) {
+            getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
+            getActivity().startService(locationIntent);
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-    // method for the alarm sound
-    public void alarm(){
-        if (alarmSound.isPlaying()) { // alarm sound stops if the button is clicked while the alarm is playing
-            alarmSound.pause();
-            alarmSound.seekTo(0);
-        } else if(btnAlarm.isChecked()){ // alarm sound starts if the button is clicked while the alarm is off.
-            alarmSound.setLooping(true);
-            alarmSound.start();
-        }
+        getActivity().stopService(locationIntent);
+        getActivity().unbindService(lConnection);
     }
 
-    // method for sending SOS message to all emergency contacts
-    protected void sendTextMessage(String lat, String longt) {
-        SmsManager smsManager = SmsManager.getDefault();
-        SharedPreferences sp = this.getContext().getSharedPreferences(AppPreferences.SP_FILE_NAME, Context.MODE_PRIVATE);
-        contacts = helper.getAllContactsDefault();
+    // Logic for when LocationService is bound to the activity.
+    private ServiceConnection lConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            Log.d(TAG,"onServiceConnected: ServiceConnection made");
+            // Gets the binder
+            LocationService.LocalBinder binder = (LocationService.LocalBinder) service;
+            // Gets the service from the binder
+            locationService = binder.getService();
+            bound = true;
 
-        String sos = sp.getString(Keys.SOS_MESSAGE_KEY.name(), "SOS Message") + " " + "https://www.google.com/search?q="+ lat + "%2C+" + longt + "&oq=" + lat + "%2C+" + longt + "&aqs=chrome..69i57.2380j0j9&sourceid=chrome&ie=UTF-8";
-
-        // send text to all emergency contacts
-        for (int i = 0; i < 5; i++) {
-            if (!contacts.get(i).equals(null)) {
-                smsManager.sendTextMessage(contacts.get(i).getContactNumber(), null, sos, null, null);
-            }
+            // Passes the data to the LocationService
+            locationService.setContacts(contacts);
         }
 
-        Toast.makeText(this.getContext(), "SOS sent", Toast.LENGTH_LONG).show();
-    }
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            Log.d(TAG,"onServiceConnected: Disconnected made");
+            bound = false;
+            locationService = null;
+        }
+    };
 }
