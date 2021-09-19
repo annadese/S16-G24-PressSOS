@@ -39,10 +39,8 @@ public class LocationService extends Service {
     private int currLocationPosition = -1;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private MediaPlayer alarmSound;
-    private Switch btnAlarm;
 
     // data
-    private ArrayList<Llocation> locations;
     private ArrayList<Contact> contacts;
     private DbHelper helper;
 
