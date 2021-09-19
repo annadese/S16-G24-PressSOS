@@ -61,23 +61,26 @@ public class HomeFragment extends Fragment{
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                // when button is pressed
+                // turn on
                 if (isPressed == 0) {
                     isPressed = 1;
                     locationService.sendSOS();
                     handler.postDelayed(myRunnable, INTERVAL);
 
+                    btnSOS.setBackgroundTintList(getResources().getColorStateList(R.color.inner_brown));
+
                     if (btnAlarm.isChecked()) {
                         locationService.alarmOn();
                     }
 
-                // when button is pressed again
+                // turn off
                 } else {
                     isPressed = 0;
                     locationService.alarmOff();
                     handler.removeCallbacks(myRunnable);
                     getActivity().stopService(locationIntent);
 
+                    btnSOS.setBackgroundTintList(getResources().getColorStateList(R.color.dark_red));
                 }
             }
         });
@@ -99,6 +102,13 @@ public class HomeFragment extends Fragment{
             getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
             getActivity().startService(locationIntent);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        this.isPressed = isPressed;
     }
 
     @Override
