@@ -26,7 +26,6 @@ public class EmergencyContactsFragment extends Fragment {
     private FloatingActionButton btnaddcontact;
     private RecyclerView recyclerView;
     private AdapterContacts cAdapter;
-    //private DataHelperContacts dhc = new DataHelperContacts();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_emergency_contacts_main, container, false);

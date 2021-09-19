@@ -60,6 +60,11 @@ public class EnterPinActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Checks if PIN is the same as the saved PIN in the sharedPreferences
+     * @param pin - the pin to be checked
+     * @return - true if PIN is the same; false if PIN is not the same
+     */
     private Boolean checkPin (String pin) {
         Boolean bool = false;
 

@@ -37,6 +37,9 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
     private Button btnsave, btndelete, btncancel;
     private EditText et_name, et_num;
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncherEdit = registerForActivityResult(
 
             new ActivityResultContracts.StartActivityForResult(),
@@ -65,6 +68,9 @@ public class EditEmergencyContactActivity extends AppCompatActivity {
                 }
             });
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncherDelete = registerForActivityResult(
 
             new ActivityResultContracts.StartActivityForResult(),

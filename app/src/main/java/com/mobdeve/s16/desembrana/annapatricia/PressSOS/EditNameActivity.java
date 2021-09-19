@@ -29,6 +29,9 @@ public class EditNameActivity extends AppCompatActivity {
     private Account account;
     private String name;
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {

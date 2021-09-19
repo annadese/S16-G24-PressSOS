@@ -25,6 +25,9 @@ public class EditSOSActivity extends AppCompatActivity {
     private EditText et_sos;
     private String sos;
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {

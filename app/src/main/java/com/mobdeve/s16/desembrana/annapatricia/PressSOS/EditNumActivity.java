@@ -25,6 +25,9 @@ public class EditNumActivity extends AppCompatActivity {
     private EditText et_num;
     private String num;
 
+    /**
+     * Used for checking if PIN is correct
+     */
     private ActivityResultLauncher<Intent> myActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {

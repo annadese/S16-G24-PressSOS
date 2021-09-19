@@ -24,5 +24,4 @@ public class Contact {
     }
 
     public void setName(String name) { this.name = name; }
-    public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
 }

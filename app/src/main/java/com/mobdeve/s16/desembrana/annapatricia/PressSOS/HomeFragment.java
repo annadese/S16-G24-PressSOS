@@ -25,9 +25,6 @@ public class HomeFragment extends Fragment{
     private static final String TAG = "HomeFragment1";
     private static final int INTERVAL = (1000 * 60) * 5;    // 5 minutes
 
-    private Button btnSOS;
-    private Switch btnAlarm;
-
     private DbHelper helper;
     private ArrayList<Contact> contacts;
 
@@ -36,8 +33,12 @@ public class HomeFragment extends Fragment{
     private LocationService locationService;
     private Intent locationIntent;
 
+    // Components for alarm
+    private Button btnSOS;
+    private Switch btnAlarm;
     private int isPressed = 0;
 
+    // Components for Handler
     Handler handler = new Handler();
     Runnable myRunnable = new Runnable() {
         public void run() {
@@ -47,21 +48,24 @@ public class HomeFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        helper = new DbHelper(getContext());
 
+
+        // initializes DBhelper and contacts
+        helper = new DbHelper(getContext());
         contacts = helper.getAllContactsDefault();
 
-        this.btnSOS = (Button)view.findViewById(R.id.main_btnsos);
-        this.btnAlarm = (Switch)view.findViewById(R.id.main_btnalarm);
+        // initializes button and switch
+        this.btnSOS = (Button) view.findViewById(R.id.main_btnsos);
+        this.btnAlarm = (Switch) view.findViewById(R.id.main_btnalarm);
 
-        // Saves a copy of the intent (for when we want to start or cancel the service again)
+        // saves a copy of the intent
         this.locationIntent = new Intent(getActivity(), LocationService.class);
 
         // when SOS button is pressed
         this.btnSOS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                // turn on
+                // turn on SOS
                 if (isPressed == 0) {
                     isPressed = 1;
                     locationService.sendSOS();
@@ -73,7 +77,7 @@ public class HomeFragment extends Fragment{
                         locationService.alarmOn();
                     }
 
-                // turn off
+                // turn off SOS
                 } else {
                     isPressed = 0;
                     locationService.alarmOff();
@@ -90,33 +94,6 @@ public class HomeFragment extends Fragment{
             getActivity().startService(locationIntent);
         }
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // Check if a service is bound. This will always be true given our current setup, but it
-        // would be useful if this were to be modified to handle playing songs outside of the app.
-        if(!bound) {
-            getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
-            getActivity().startService(locationIntent);
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        this.isPressed = isPressed;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        getActivity().stopService(locationIntent);
-        getActivity().unbindService(lConnection);
     }
 
     // Logic for when LocationService is bound to the activity.
@@ -141,4 +118,29 @@ public class HomeFragment extends Fragment{
             locationService = null;
         }
     };
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if(!bound) {
+            getActivity().bindService(locationIntent, lConnection, Context.BIND_AUTO_CREATE);
+            getActivity().startService(locationIntent);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        this.isPressed = isPressed;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        getActivity().stopService(locationIntent);
+        getActivity().unbindService(lConnection);
+    }
 }

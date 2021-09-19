@@ -21,7 +21,4 @@ public class Account {
     public String getSosText() { return sosText; }
 
     public void setName(String name){ this.name = name; }
-    public void setNum(String num){ this.num = num; }
-    public void setPin(String pin){ this.pin = pin; }
-    public void setSosText(String sosText) { this.sosText = sosText; }
 }
