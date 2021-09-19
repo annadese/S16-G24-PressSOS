@@ -30,6 +30,7 @@
         android:gravity="center"
         android:inputType="textMultiLine"
         android:lineSpacingExtra="8sp"
+        android:maxLength="65"
         android:text="EMERGENCY! Your friend needs your help! Click the link to see her current location."
         android:textAlignment="center"
         android:textColor="#6C6868" />
